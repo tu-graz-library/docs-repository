@@ -1,0 +1,56 @@
+
+site_name: Repository Documentation
+site_url: https://tu-graz-library.github.io/docs-repository
+site_description: Repository Documentation
+site_author: 'Mojib Wali'
+
+repo_url: https://github.com/tu-graz-library/docs-repository
+edit_uri: ""
+
+# Copyright
+copyright: 'Copyright &copy; 2020-2021 Graz University of Technology'
+
+theme:
+  highlightjs: true
+  features:
+    - navigation.tabs
+  name: material
+  custom_dir: 'overrides'
+  palette:
+    primary: 'white'
+  font:
+    text: 'Open Sans'
+    code: 'Roboto Mono'
+  logo: 'images/tug_logo.png'
+  favicon: 'images/favicon.ico'
+
+
+nav:
+  - Home: 'index.md'
+  - Deployment:
+    - Infrastructure: 'deployment/index.md'
+    # - Test Instance: 'deployment/test.md'
+    # - Production Instance: 'deployment/prod.md'
+    - Workflow : 'deployment/workflow.md'
+    - Deploy : 'deployment/deploy.md'
+  - Configs:
+    - Configurations: 'configs/index.md'
+    - Gitlab Runner: 'configs/gitlab-runner.md'
+    - PostgreSQL: 'configs/postgresql.md'
+    - SSH-key: 'configs/sshkey.md'
+    - CEPH: 'configs/ceph.md'
+# Customization
+extra:
+  social:
+  - icon: fontawesome/brands/github-alt
+    link: 'https://github.com/tu-graz-library/docs-repository'
+extra_css:
+  - stylesheets/custom.css
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true

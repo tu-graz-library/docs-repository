@@ -6,6 +6,10 @@
  Repository Documentations
 ==========================
 
+.. image:: https://github.com/tu-graz-library/docs-repository/actions/workflows/gh-actions.yml/badge.svg
+        :target: https://github.com/tu-graz-library/docs-repository/actions/workflows/gh-actions.yml
+
+
 **Running locally** (linux)
 
 .. code-block::

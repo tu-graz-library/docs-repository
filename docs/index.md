@@ -1,8 +1,8 @@
 # Home
 
-Welcome to the Tu Graz Repository!
+Welcome to the TU Graz Repository!
 
-Tu Graz Repository is a ready-to-go, turn-key Research Data Management repository. And an instance of [InvenioRDM](https://invenio-software.org/products/rdm/).
+TU Graz Repository is a ready-to-go, turn-key Research Data Management repository and an instance of [InvenioRDM](https://invenio-software.org/products/rdm/).
 
 
 ## Development

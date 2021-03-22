@@ -27,23 +27,14 @@ which then proxies the requests to the **web-ui**, and **web-api**, as shown bel
 
 
 ### docker-compose
-docker-compose is a tool for defining and running multi-container Docker applications
+docker-compose is a tool for defining and running multi-container Docker applications.
 
-In **[Repository](https://gitlab.tugraz.at/invenio/repository)** there are two **docker-compose** files. 
-
-  1. **doker-compose-test.yml**
-
-    As the name suggests this docker-compose file is used for [Test Instance](https://invenio-test.tugraz.at).
-
-  2. **docker-compose-prod.yml**
-
-    As the name suggests this docker-compose file is used for [Production Instance](https://repository.tugraz.at).
+**docker-compose-prod.yml**
 
 ```yaml
 # -*- coding: utf-8 -*-
 #
 # Copyright (C) 2021 Graz University of Technology
-# Maintainer Mojib Wali
 #
 # Following services are included:
 # - Frontend server: Nginx (exposed port: 8080)
@@ -106,7 +97,6 @@ volumes:
   archived_data:
 
 ```
-Both docker-compose files have the same commands, but diffrent conatiner names and environment variables.
 
 ### Dockerfile
 A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.
@@ -661,40 +651,6 @@ ADD start.sh /exim_start
 RUN chmod +x /exim_start
 ENV EXIM_LOCALINTERFACE=0.0.0.0
 ENTRYPOINT ["/exim_start"]
-```
-
-#### deploy-prod.sh
-Is a helper file for deployment, and used by ```.gitlab-ci.yml```. It contains instruction for docker commands.
-
-```bash
-CONTAINER_NAME=smarthost
-IMAGE_NAME=registry.gitlab.tugraz.at/invenio/exim4:latest
-
-echo "################################################"
-echo "Stopping and removing container with given name......$CONTAINER_NAME"
-docker stop $CONTAINER_NAME || true && docker rm $CONTAINER_NAME || true
-
-echo "################################################"
-echo "Removing image if given name exists...$IMAGE_NAME"
-if test ! -z "$(docker images -q $IMAGE_NAME)"; then
-  echo "Image exist..."
-  docker rmi -f $IMAGE_NAME
-fi
-
-echo "################################################"
-echo "Running new container.............."
-docker run --name="$CONTAINER_NAME" -p 25:25 -d \
--e HOSTNAME="repository.tugraz.at" \
--e EXIM_SMARTHOST="**********" \
--e EXIM_PASSWORD="**********" \
--e EXIM_LOCALINTERFACE="0.0.0.0" \
--e EXIM_DOMAIN="repository.tugraz.at" \
--e EXIM_ALLOWED_SENDERS="**********/28, **********/28" \
---restart=always \
-$IMAGE_NAME
-
-echo "################################################"
-echo "job ended..."
 ```
 
 #### .gitlab-ci.yml

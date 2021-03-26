@@ -453,34 +453,64 @@ have a seperate repository in the Gitlab Group **[invenio](https://gitlab.tugraz
 
 Except [PostgreSQL](https://www.postgresql.org/) other Services deployment are the same.
 
-### EXIM4
+As an Example we will have a look into our [Elasticsearch](https://gitlab.tugraz.at/invenio/exim4) deployment.
+
+### Elasticsearch
 
 #### Dockerfile
 A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.
 
-The Dockerfile for [EXIM4](https://gitlab.tugraz.at/invenio/exim4), as below.
+The Dockerfile for [Elasticsearch](https://gitlab.tugraz.at/invenio/elasticsearch), as below.
 ```docker
-FROM debian:jessie
+# Pull elasticsearch version 7
+From docker.elastic.co/elasticsearch/elasticsearch-oss:7.9.3
 
-# This dockerfile was inpired by greinacker/exim4
+# add single-node config
+RUN echo "discovery.type: single-node" >> /usr/share/elasticsearch/config/elasticsearch.yml
 
-# install packages: exim4, mailutils
-RUN apt-get update \
- && apt-get install --no-install-recommends -y \
-  exim4-daemon-light mailutils xtail vim \
- # Slim down image
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man/?? /usr/share/man/??_*
+# define docker User
+USER elasticsearch
+```
 
-# add the exim4 start script
-ADD start.sh /exim_start
-RUN chmod +x /exim_start
-ENV EXIM_LOCALINTERFACE=0.0.0.0
-ENTRYPOINT ["/exim_start"]
+#### deploy-prod.sh
+Is a helper file for deployment, and used by .gitlab-ci.yml. It contains instruction for docker commands.
+
+```bash
+CONTAINER_NAME=elasticsearch
+IMAGE_NAME=registry.gitlab.tugraz.at/invenio/elasticsearch:latest
+
+echo "################################################"
+echo "Stopping and removing container with given name......$CONTAINER_NAME"
+docker stop $CONTAINER_NAME || true && docker rm $CONTAINER_NAME || true
+
+echo "################################################"
+echo "Removing image if given name exists...$IMAGE_NAME"
+if test ! -z "$(docker images -q $IMAGE_NAME)"; then
+  echo "Image exist..."
+  docker rmi -f $IMAGE_NAME
+fi
+
+echo "################################################"
+echo "Running new container.............."
+docker run --name="$CONTAINER_NAME" \
+--mount type=bind,source=/storage,target=/usr/share/elasticsearch/data \
+--memory 1g -p 9200:9200 -p 9300:9300 -d \
+-e bootstrap.memory_lock=true \
+-e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
+-e discovery.type=single-node \
+--health-cmd="curl --fail localhost:9200/_cluster/health?wait_for_status=green || exit 1" \
+--health-interval=30s \
+--health-retries=5 \
+--health-timeout=30s \
+--restart=always \
+$IMAGE_NAME
+
+echo "################################################"
+echo "job ended..."
 ```
 
 #### .gitlab-ci.yml
-[EXIM4](https://gitlab.tugraz.at/invenio/exim4) pipeline consist of **three stages**
+[Elasticsearch](https://gitlab.tugraz.at/invenio/elasticsearch) pipeline consist of **two stages**
 
 ##### build
 Pipeline builds the docker image and pushes it to the Registry.
@@ -513,13 +543,13 @@ Execute jobs with Gitlab-runner tag name ```shell```:
 ```
 
 ##### test
-In this stage the pipeline pulls the newly created image and creates a container to the Test instance.
+In this stage the pipeline pulls the newly created image and creates a container to the VM.
 
 ```before_script``` run followings:
 
 * Install ssh-agent if not already installed, it is required by Docker.
 * Run ssh-agent (inside the build environment)
-* Add the SSH key stored in SERVER_3_PRIVATE_KEY variable to the agent store
+* Add the SSH key stored in PROD_03_PRIVATE_KEY variable to the agent store
 * Create the SSH directory and give it the right permissions
 * scan the keys of your private server from variable ```SSH_SERVER_HOSTKEYS```
 
@@ -528,17 +558,17 @@ In this stage the pipeline pulls the newly created image and creates a container
     - echo "SSH-USER"
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
     - eval $(ssh-agent -s)
-    - echo "$SERVER_3_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - echo "$PROD_03_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - echo "$SSH_SERVER_HOSTKEYS" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
 ```
-```script```:  using ```ssh``` commands logs in to docker, and runs scripts in ```deploy-test.sh``` to our server.
+```script```:  using ```ssh``` commands logs in to docker, and runs scripts in ```deploy-prod.sh``` to our server.
 ```yml
   script:
-    - ssh $SERVER_3_DOMAIN "echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin"
-    - ssh $SERVER_3_DOMAIN "eval '$(cat ./deploy-test.sh)'"
+    - ssh $PROD_03_DOMAIN "echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin"
+    - ssh $PROD_03_DOMAIN "eval '$(cat ./deploy-test.sh)'"
 ```
 Only run for branch ```master```:
 ```yml
@@ -594,7 +624,6 @@ Execute jobs with Gitlab-runner tag name ```shell```:
 ```yml
 stages:
   - build
-  - test
   - prod
 
 build:
@@ -609,56 +638,6 @@ build:
     - docker build -t "$CI_REGISTRY_IMAGE" .
     - echo "push image to registry..."
     - docker push "$CI_REGISTRY_IMAGE"
-  only:
-    - master
-  tags:
-   - shell
-
-
-test:
-  stage: test
-  before_script:
-    - echo "################################"
-    - echo "SSH-USER"
-  ##
-  ## Install ssh-agent if not already installed, it is required by Docker.
-  ## (change apt-get to yum if you use an RPM-based image)
-  ##
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
-  ##
-  ## Run ssh-agent (inside the build environment)
-  ##
-    - eval $(ssh-agent -s)
-  ##
-  ## Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
-  ## We're using tr to fix line endings which makes ed25519 keys work
-  ## without extra base64 encoding.
-  ## https://gitlab.com/gitlab-examples/ssh-private-key/issues/1#note_48526556
-  ##
-    - echo "$SERVER_3_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-  ##
-  ## Create the SSH directory and give it the right permissions
-  ##
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-  ##
-  ## Use ssh-keyscan to scan the keys of your private server. Replace gitlab.com
-  ## with your own domain name. You can copy and repeat that command if you have
-  ## more than one server to connect to.
-  ##
-    #- ssh-keyscan invenio03-test.tugraz.at >> ~/.ssh/known_hosts
-    #- chmod 644 ~/.ssh/known_hosts
-  ##
-  ## Alternatively, assuming you created the SSH_SERVER_HOSTKEYS variable
-  ## previously, uncomment the following two lines instead.
-  ##
-    - echo "$SSH_SERVER_HOSTKEYS" > ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-
-  script:
-    - echo "################################"
-    - ssh $SERVER_3_DOMAIN "echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin"
-    - ssh $SERVER_3_DOMAIN "eval '$(cat ./deploy-test.sh)'"
   only:
     - master
   tags:

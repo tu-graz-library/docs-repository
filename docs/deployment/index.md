@@ -2,25 +2,6 @@
 
 ![](images/Infrastructure.png?raw=true)
 
-<!-- Tu Graz Repository has **3** instances running on Debian (VMs).
-
-## Development Instance
-[invenio-dev01.tugraz.at](https://invenio-dev01.tugraz.at/)
-
-Development instance has **1** VM:
-
-1. Web Server/Services VM (invenio-dev01)
-
-
-## Test Instance
-[invenio-test.tugraz.at](https://invenio-test.tugraz.at/)
-
-Test instance has **3** VMs:
-
-1. Web Server VM (invenio01-test)
-2. Web Server VM (invenio02-test)
-3. Services VM (invenio03-test) -->
-
 ## Production Instance
 [repository.tugraz.at](https://repository.tugraz.at/)
 

@@ -1,7 +1,6 @@
 # Deployment Workflow
 
-To understand how the deployment is setup. We will divide the process into two sections.
-
+To understand TU Graz repository deployment, we will devide the process into two sections.
 
 1. Web Server deployment
 2. Services deployment

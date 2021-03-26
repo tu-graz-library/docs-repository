@@ -4,7 +4,9 @@ site_url: https://tu-graz-library.github.io/docs-repository
 site_description: Repository Documentation
 site_author: 'Mojib Wali'
 
-repo_url: https://github.com/tu-graz-library/docs-repository
+# uncomment to show the github icon in the header with
+# number of forks & stars
+# repo_url: https://github.com/tu-graz-library/docs-repository
 edit_uri: ""
 
 # Copyright

@@ -2,7 +2,7 @@
 
 ![](images/Infrastructure.png?raw=true)
 
-Tu Graz Repository has **3** instances running on Debian (VMs).
+<!-- Tu Graz Repository has **3** instances running on Debian (VMs).
 
 ## Development Instance
 [invenio-dev01.tugraz.at](https://invenio-dev01.tugraz.at/)
@@ -19,7 +19,7 @@ Test instance has **3** VMs:
 
 1. Web Server VM (invenio01-test)
 2. Web Server VM (invenio02-test)
-3. Services VM (invenio03-test)
+3. Services VM (invenio03-test) -->
 
 ## Production Instance
 [repository.tugraz.at](https://repository.tugraz.at/)
@@ -31,7 +31,7 @@ Production instance has **3** VMs:
 3. Services VM (invenio03-prod)
 
 
-The virtual machines for Test and Production are split into two categories, **Web Server** and **Services**. In this guideline we will take a look on both:
+These virtual machines are split into two categories, **Web Servers** and **Services**. In this guideline we will take a look on both:
 
 ### Web Server VM
 
@@ -41,9 +41,9 @@ Base image of the [repository](https://gitlab.tugraz.at/invenio/repository) inst
 
 * **[Celery](https://docs.celeryproject.org/en/stable/userguide/application.html)**
 
-Web Server VMs are configured to the F5 load balancer that is provided by [Tu Graz ZID](https://www.tugraz.at/tu-graz/organisationsstruktur/serviceeinrichtungen-und-stabsstellen/zentraler-informatikdienst/).
+The web server VMs are configured to the F5 load balancer that is provided by [Tu Graz ZID](https://www.tugraz.at/tu-graz/organisationsstruktur/serviceeinrichtungen-und-stabsstellen/zentraler-informatikdienst/).
 
-The load balancer is forwarding the requests to one of the (Web Server VM), and then the requests are proxied by [NGINX](https://gitlab.tugraz.at/invenio/nginx) to [UWSGI web applications](https://uwsgi-docs.readthedocs.io/en/latest/WSGIquickstart.html). As shown below:
+F5 load balancer is forwarding the requests to one of the (Web Server VM), and then the requests are proxied by [NGINX](https://gitlab.tugraz.at/invenio/nginx) to [UWSGI web applications](https://uwsgi-docs.readthedocs.io/en/latest/WSGIquickstart.html). As shown below:
 
 ![](images/invenio-prod.png?raw=true)
 

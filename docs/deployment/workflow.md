@@ -1,8 +1,6 @@
 # Deployment Workflow
 
-The deployment workflow for [Test Instance](https://invenio-test.tugraz.at) & [Production Instance](https://repository.tugraz.at) are the same.
-
-To understand how the deployment works. We will divide the process into two sections.
+To understand how the deployment is setup. We will divide the process into two sections.
 
 
 1. Web Server deployment
@@ -20,7 +18,7 @@ From the base image then we are running three containers **web-ui**, **web-api**
 ![](images/baseimage.png?raw=true)
 
 
-Alongside running our three containers from the base image, the **docker-compose** is also responsible to push **[NGINX](https://gitlab.tugraz.at/invenio/nginx)** container to our servers.
+Alongside these three containers from the base image, the **docker-compose** is also responsible to push **[NGINX](https://gitlab.tugraz.at/invenio/nginx)** container to our servers.
 which then proxies the requests to the **web-ui**, and **web-api**, as shown below:
 
 ![](images/webserver.png?raw=true)
@@ -157,84 +155,11 @@ ENTRYPOINT [ "bash", "-c"]
 ### .gitlab-ci.yml
 is a YAML file that you create on your project's root. This file automatically runs whenever you push code in the repository. Pipelines consist of one or more stages that run in order and can each contain one or more jobs that run in parallel. These jobs (or scripts) get executed by the [GitLab Runner](https://docs.gitlab.com/runner/) agent.
 
-[Repository](https://gitlab.tugraz.at/invenio/repository) pipeline consist of **seven stages**:
+[Repository](https://gitlab.tugraz.at/invenio/repository) production pipeline consist of **three stages**:
 
-#### dev
-In this stage the pipeline is building base image for **Dev instance**, and deploying it to the development server [https://invenio-dev01.tugraz.at](https://invenio-dev01.tugraz.at).
 
-Login to docker, clean docker cache, for containers, volumes and images.
-```yml
-  before_script:
-    - echo "login to docker..."
-    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
-    - echo "Clean docker cache, for containers, volumes and images..."
-    - docker-compose -f docker-compose.dev.yml down
-    - docker system prune -f --volumes
-    - docker system prune -a -f
-    - docker image prune -f
-```
-
-* Build and push base image to gitlab [Container Registry](https://gitlab.tugraz.at/invenio/repository/container_registry).Using Tag name ```DEV```.
-* Run docker-compose for scripts in ```docker-compose.dev.yml``` file, and deploy to the development instance.
-* Run ```wipe_recreate.sh``` scripts for clean Db, Es, Cache and demo rdm records.
-```yml
-  script:
-    - echo "build the image..."
-    - docker build --no-cache -t "$CI_REGISTRY_IMAGE":$DEV --build-arg ENVIRONMENT=DEV .
-    - echo "Push image to the gitlab registry..."
-    - docker push "$CI_REGISTRY_IMAGE":$DEV
-    - echo "run docker-compose..."
-    - docker-compose -f docker-compose.dev.yml up -d
-    - echo "create demo records.."
-    - docker exec repository_web-api_1 chmod +x ./wipe_recreate.sh
-    - docker exec repository_web-api_1 ./wipe_recreate.sh
-```
-
-Only run for branch ```dev``` & ```merge_requests``` to the master branch.
-```yml
-  only:
-    - dev
-    - merge_requests
-```
-
-Execute jobs with Gitlab-runner tag name ```dev```:
-```yml
-  tags:
-   - dev
-```
-
-Full dev stage:
-
-```yml
-dev-deploy:
-  stage: dev
-  before_script:
-    - echo "login to docker..."
-    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
-    - echo "Clean docker cache, for containers, volumes and images..."
-    - docker-compose -f docker-compose.dev.yml down
-    - docker system prune -f --volumes
-    - docker system prune -a -f
-    - docker image prune -f
-  script:
-    - echo "build the image..."
-    - docker build --no-cache -t "$CI_REGISTRY_IMAGE":$DEV --build-arg ENVIRONMENT=DEV .
-    - echo "Push image to the gitlab registry..."
-    - docker push "$CI_REGISTRY_IMAGE":$DEV
-    - echo "run docker-compose..."
-    - docker-compose -f docker-compose.dev.yml up -d
-    - echo "create demo records.."
-    - docker exec repository_web-api_1 chmod +x ./wipe_recreate.sh
-    - docker exec repository_web-api_1 ./wipe_recreate.sh
-  only:
-    - dev
-    - merge_requests
-  tags:
-   - dev
-```
-
-#### build_test
-In this stage the pipeline is building base image for **Test instance**.
+#### build_prod
+In this stage the pipeline is building base image for **Production instance**.
 
 Login to docker, clean docker cache, for containers, volumes and images.
 ```yml
@@ -248,19 +173,26 @@ Login to docker, clean docker cache, for containers, volumes and images.
 ```
 
 Build and push base image to gitlab [Container Registry](https://gitlab.tugraz.at/invenio/repository/container_registry).
-Using Tag name ```TEST```.
+Using Tag name ```CI_COMMIT_TAG```, which is a reference to the latest repository tag/release.
 ```yml
   script:
     - echo "Build base image..." 
-    - docker build --no-cache -t "$CI_REGISTRY_IMAGE":$TEST --build-arg ENVIRONMENT=PROD .
+    - docker build --no-cache -t "$CI_REGISTRY_IMAGE":$CI_COMMIT_TAG --build-arg ENVIRONMENT=PROD . 
     - echo "Push image to the gitlab registry..." 
-    - docker push "$CI_REGISTRY_IMAGE":$TEST
+    - docker push "$CI_REGISTRY_IMAGE":$CI_COMMIT_TAG
 ```
 
-Only run for branch ```master``` & ```test```.
+Logout from docker
+```yml
+  after_script:
+    - echo "Logout from docker..." 
+    - "docker logout ${CI_REGISTRY}"
+```
+
+Only run for ```tags```.
 ```yml
   only:
-    - master
+    - tags
 ```
 
 Execute jobs with Gitlab-runner tag name ```shell```:
@@ -269,10 +201,10 @@ Execute jobs with Gitlab-runner tag name ```shell```:
    - shell
 ```
 
-Full build_test stage:
+Full build_prod stage:
 ```yml
-build-test:
-  stage: build_test
+build_prod:
+  stage: build_prod
   before_script:
     - echo "login to docker..."
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
@@ -282,52 +214,40 @@ build-test:
     - docker image prune -f
   script:
     - echo "Build base image..." 
-    - docker build --no-cache -t "$CI_REGISTRY_IMAGE":$TEST --build-arg ENVIRONMENT=PROD .
+    - docker build --no-cache -t "$CI_REGISTRY_IMAGE":$CI_COMMIT_TAG --build-arg ENVIRONMENT=PROD . 
     - echo "Push image to the gitlab registry..." 
-    - docker push "$CI_REGISTRY_IMAGE":$TEST
+    - docker push "$CI_REGISTRY_IMAGE":$CI_COMMIT_TAG
   after_script:
     - echo "Logout from docker..." 
     - "docker logout ${CI_REGISTRY}"
   only:
-    - master
+    - tags
   tags:
    - shell
 ```
 
 
-#### test_one
-In this stage pipeline is deploying the base image to the **Web Server(invenio01-test)**.
+#### prod_one-deploy
+In this stage pipeline is deploying the base image to the **Web Server(invenio01-prod)**.
 
-Login to docker, clean docker cache, for containers, volumes and images.
+Login to docker, clean docker cache, containers, volumes & images.
 ```yml
   before_script:
     - echo "login to docker..."
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
     - echo "Clean docker cache, for containers, volumes and images..."
-    - docker-compose -f docker-compose.test.yml down
+    - docker-compose -f docker-compose.prod.yml down
     - docker system prune -f --volumes
     - docker system prune -a -f
     - docker image prune -f
 ```
 
-Run docker-compose, pull images and run containers defined in ```docker-compose.test.yml``` file.
+Run docker-compose, pull images and run containers defined in ```docker-compose.prod.yml``` file.
 
 ```yml
   script:
     - echo "run docker-compose..."
-    - docker-compose -f docker-compose.test.yml up -d
-```
-
-Only run for branch ```master``` & ```test```.
-```yml
-  only:
-    - master
-```
-
-Execute jobs with Gitlab-runner tag name ```test01```:
-```yml
-  tags:
-   - test01
+    - docker-compose -f docker-compose.prod.yml up -d
 ```
 
 Logout from docker
@@ -337,215 +257,121 @@ Logout from docker
     - "docker logout ${CI_REGISTRY}"
 ```
 
-Full test_one stage:
+Only run for ```tags```.
 ```yml
-test_one-deploy:
-  stage: test_one
+  only:
+    - tags
+```
+
+Execute jobs with Gitlab-runner tag name ```prod01```:
+```yml
+  tags:
+   - prod01
+```
+
+
+Full prod_one-deploy stage:
+```yml
+prod_one-deploy:
+  stage: prod_one
   before_script:
     - echo "login to docker..."
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
     - echo "Clean docker cache, for containers, volumes and images..."
-    - docker-compose -f docker-compose.test.yml down
+    - docker-compose -f docker-compose.prod.yml down
     - docker system prune -f --volumes
     - docker system prune -a -f
     - docker image prune -f
 
   script:
     - echo "run docker-compose..."
-    - docker-compose -f docker-compose.test.yml up -d
+    - docker-compose -f docker-compose.prod.yml up -d
   after_script:
     - echo "Logout from docker..." 
     - "docker logout ${CI_REGISTRY}"
   only:
-    - master
+    - tags
   tags:
-   - test01
+   - prod01
+
 ```
 
-#### test_two
-In this stage pipeline is deploying the base image to the **Web Server(invenio02-test)**.
+#### prod_two-deploy
+In this stage pipeline is deploying the base image to the **Web Server(invenio02-prod)**.
 
-Login to docker, clean docker cache, for containers, volumes and images.
+Login to docker, clean docker cache, containers, volumes & images.
 ```yml
   before_script:
     - echo "login to docker..."
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
     - echo "Clean docker cache, for containers, volumes and images..."
-    - docker-compose -f docker-compose.test.yml down
+    - docker-compose -f docker-compose.prod.yml down
     - docker system prune -f --volumes
     - docker system prune -a -f
     - docker image prune -f
 ```
 
-Run docker-compose, pull images and run containers defined in ```docker-compose.test.yml``` file.
+Run docker-compose, pull images and run containers defined in ```docker-compose.prod.yml``` file.
 
 ```yml
   script:
     - echo "run docker-compose..."
-    - docker-compose -f docker-compose.test.yml up -d
+    - docker-compose -f docker-compose.prod.yml up -d
 ```
-
-Only run for branch ```master``` & ```test```.
-```yml
-  only:
-    - master
-```
-
-Execute jobs with Gitlab-runner tag name ```test02```:
-```yml
-  tags:
-   - test02
-```
-
 Logout from docker
 ```yml
   after_script:
     - echo "Logout from docker..." 
     - "docker logout ${CI_REGISTRY}"
+```
+
+Only run for ```tags```.
+```yml
+  only:
+    - tags
+```
+
+Execute jobs with Gitlab-runner tag name ```prod02```:
+```yml
+  tags:
+   - prod02
 ```
 
 Full test_two stage:
 ```yml
-test_two-deploy:
-  stage: test_two
+prod_two-deploy:
+  stage: prod_two
   before_script:
     - echo "login to docker..."
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
     - echo "Clean docker cache, for containers, volumes and images..."
-    - docker-compose -f docker-compose.test.yml down
+    - docker-compose -f docker-compose.prod.yml down
     - docker system prune -f --volumes
     - docker system prune -a -f
     - docker image prune -f
 
   script:
     - echo "run docker-compose..."
-    - docker-compose -f docker-compose.test.yml up -d
+    - docker-compose -f docker-compose.prod.yml up -d
   after_script:
     - echo "Logout from docker..." 
     - "docker logout ${CI_REGISTRY}"
   only:
-    - master
+    - tags
   tags:
-   - test02
+   - prod02
 ```
 
 #### Full .gitlab-ci.yml
 
 ```yml
-# environment variables
-# environment variables
-variables:
-  DEV: dev
-  TEST: test
 
 # Pipline stages
 stages:
-  - dev
-  - build_test
-  - test_one
-  - test_two
   - build_prod
   - prod_one
   - prod_two
 
-# Build & deploy stage for dev instance
-dev-deploy:
-  stage: dev
-  before_script:
-    - echo "login to docker..."
-    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
-    - echo "Clean docker cache, for containers, volumes and images..."
-    - docker-compose -f docker-compose.dev.yml down
-    - docker system prune -f --volumes
-    - docker system prune -a -f
-    - docker image prune -f
-  script:
-    - echo "build the image..."
-    - docker build --no-cache -t "$CI_REGISTRY_IMAGE":$DEV --build-arg ENVIRONMENT=DEV .
-    - echo "Push image to the gitlab registry..."
-    - docker push "$CI_REGISTRY_IMAGE":$DEV
-    - echo "run docker-compose..."
-    - docker-compose -f docker-compose.dev.yml up -d
-    - echo "create demo records.."
-    - docker exec repository_web-api_1 chmod +x ./wipe_recreate.sh
-    - docker exec repository_web-api_1 ./wipe_recreate.sh
-  only:
-    - dev
-    - merge_requests
-  tags:
-   - dev
-
-# Build stage for test instance
-build-test:
-  stage: build_test
-  before_script:
-    - echo "login to docker..."
-    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
-    - echo "Clean docker cache, for containers, volumes and images..."
-    - docker system prune -f --volumes
-    - docker system prune -a -f
-    - docker image prune -f
-  script:
-    - echo "Build base image..." 
-    - docker build --no-cache -t "$CI_REGISTRY_IMAGE":$TEST --build-arg ENVIRONMENT=PROD .
-    - echo "Push image to the gitlab registry..." 
-    - docker push "$CI_REGISTRY_IMAGE":$TEST
-  after_script:
-    - echo "Logout from docker..." 
-    - "docker logout ${CI_REGISTRY}"
-  only:
-    - master
-  tags:
-   - shell
-
-# Deploy stage for web server 01
-test_one-deploy:
-  stage: test_one
-  before_script:
-    - echo "login to docker..."
-    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
-    - echo "Clean docker cache, for containers, volumes and images..."
-    - docker-compose -f docker-compose.test.yml down
-    - docker system prune -f --volumes
-    - docker system prune -a -f
-    - docker image prune -f
-
-  script:
-    - echo "run docker-compose..."
-    - docker-compose -f docker-compose.test.yml up -d
-  after_script:
-    - echo "Logout from docker..." 
-    - "docker logout ${CI_REGISTRY}"
-  only:
-    - master
-  tags:
-   - test01
-
-# Deploy stage for web server 02
-test_two-deploy:
-  stage: test_two
-  before_script:
-    - echo "login to docker..."
-    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
-    - echo "Clean docker cache, for containers, volumes and images..."
-    - docker-compose -f docker-compose.test.yml down
-    - docker system prune -f --volumes
-    - docker system prune -a -f
-    - docker image prune -f
-
-  script:
-    - echo "run docker-compose..."
-    - docker-compose -f docker-compose.test.yml up -d
-  after_script:
-    - echo "Logout from docker..." 
-    - "docker logout ${CI_REGISTRY}"
-  only:
-    - master
-  tags:
-   - test02
-
-#################################################
-# Build stage for prod
 build_prod:
   stage: build_prod
   before_script:
@@ -614,6 +440,7 @@ prod_two-deploy:
   tags:
    - prod02
 ```
+
 
 ## Services deployment
 Services such as 

@@ -39,18 +39,18 @@ Meaning we should only deploy to production when we have a new ```Tag/release```
    For example the following change in ```TAG_PROD``` variable:
 
 ```diff
-- TAG_PROD=v0.1.1 
-+ TAG_PROD=v0.1.2
+- v2.0.2
++ v2.0.3
 ```
 
 **2.** Create a new ```Tag/release``` for the **[Repository](https://gitlab.tugraz.at/invenio/repository)**, using semantic-versioning.
-   for example ```v0.1.2```, same value as in the **.env** file.
+   for example ```v2.0.3```, same value as in the **```TAG_PROD```** file.
 
    For Example using git:
 
 ```
-git tag -a v0.1.2 -m "my version 0.1.2"
+git tag -a v2.0.3 -m "my version 0.1.2"
  ```
 
 ### Pipeline
-![](images/prod-pipeline.JPG?raw=true)
+![](images/pipeline-prod.png?raw=true)

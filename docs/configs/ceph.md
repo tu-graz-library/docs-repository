@@ -63,7 +63,7 @@ df -h
 ```
 ```console
 Filesystem                                                                        Size  Used Avail Use% Mounted on
-<ip:port>:/invenio/invenioprod   10T     0   10T   0% /storage
+<ip:port>:/invenio/invenioprod   size     0   size   0% /storage
 ```
 
 #### Unmount

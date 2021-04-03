@@ -20,7 +20,7 @@ is a software application that "aims at developing a full stack for building hos
 uwsgi (all lowercase) is the native binary protocol that uWSGI uses to communicate with other servers.
 
 * **[Celery](https://docs.celeryproject.org/en/stable/userguide/application.html)**
-Celery is an open source asynchronous task queue or job queue which is based on distributed message passing. While it supports scheduling, its focus is on operations in real time.
+is asynchronous task queue or job queue which is based on distributed message passing. While it supports scheduling, its focus is on operations in real time.
 
 * **[Nginx](https://nginx.org/en/docs/)**
 is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache. 

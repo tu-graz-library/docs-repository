@@ -31,9 +31,9 @@ nav:
   - Home: 'index.md'
   - Deployment:
     - Infrastructure: 'deployment/index.md'
-    # - Test Instance: 'deployment/test.md'
-    # - Production Instance: 'deployment/prod.md'
-    - Workflow : 'deployment/workflow.md'
+    - Production instance: 'deployment/production.md'
+    - Test Instance: 'deployment/test.md'
+    - Development instance: 'deployment/dev.md'
     - Deploy : 'deployment/deploy.md'
   - Configs:
     - Configurations: 'configs/index.md'

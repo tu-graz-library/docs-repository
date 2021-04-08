@@ -24,22 +24,22 @@ $ su postgres
 
 Create a admin user:
 ```sql
-CREATE USER admin WITH PASSWORD '************';
+CREATE USER <USERNAME> WITH PASSWORD '************';
 ```
 
 Give the user permissions:
 ```sql
-ALTER USER admin WITH SUPERUSER;
+ALTER USER "USERNAME" WITH SUPERUSER;
 ```
 
 Create Database:
 ```sql
-CREATE database repository;
+CREATE database DATABASE_NAME;
 ```
 
-Grant permissions of database for admin user:
+Grant permissions of database for created user:
 ```sql
-GRANT ALL PRIVILEGES ON DATABASE "repository" to admin;
+GRANT ALL PRIVILEGES ON DATABASE "DATABASE_NAME" to USER;
 ```
 
 ## Configuration
@@ -80,5 +80,5 @@ Access the database from one of the configured machines.
 
 
 ```bash
-psql -U admin -d repository -h <host ip address>
+psql -U USERNAME -d DATABASE -h <host ip address>
 ```

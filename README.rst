@@ -9,6 +9,9 @@
 .. image:: https://github.com/tu-graz-library/docs-repository/actions/workflows/gh-actions.yml/badge.svg
         :target: https://github.com/tu-graz-library/docs-repository/actions/workflows/gh-actions.yml
 
+.. image:: https://repository.tugraz.at/badge/DOI/10.3217/dataset-dehmp-83c03.svg
+        :target: https://doi.org/10.3217/dataset-dehmp-83c03
+   
 
 **Running locally** (linux)
 

@@ -35,6 +35,9 @@ nav:
     - Test Instance: 'deployment/test.md'
     - Development instance: 'deployment/dev.md'
     - Deploy : 'deployment/deploy.md'
+  - Services:
+    # - Development services: 'services/index.md'
+    - pgAdmin: 'services/pgadmin.md'
   - Configs:
     - Configurations: 'configs/index.md'
     - Gitlab Runner: 'configs/gitlab-runner.md'

@@ -16,6 +16,11 @@ Get to know current deployment workflow for Tu Graz repository .
 
 [> Deployment Guides](deployment/index.md)
 
+<!-- ## Services
+In this session, we will explore the services that has been added to make your development/deployment environment smoother.
+
+[> Services](services/index.md) -->
+
 
 ## Configs
 For more configurations such as How the gitlab-runners are registered? How the Database is setup? And so much more...

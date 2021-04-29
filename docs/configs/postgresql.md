@@ -116,6 +116,12 @@ For example, create a backup of the PostgreSQL database named db1 in the tar for
 pg_dump -U postgres -F c db1 > db1.tar
 ```
 
+If you want to save the backup in a Plain-text (SQL), run the following command:
+
+```sql
+pg_dump db1 > db1_backup.sql
+```
+
 If you want to save the backup in a directory format, run the following command:
 
 ```sql
@@ -198,6 +204,13 @@ For example, restore a database from the file remote_db1.tar on the remote serve
 ```sql
 pg_restore -h 192.168.0.100 -U postgres -Ft -d remote_db1 < remote_db1.tar
 ```
+
+**Note** to restore from plain-text format you need to use ```psql``` command instead:
+
+```sql
+psql db1 < db1_backup.sql
+```
+
 
 For more information, you can see the [pg_dump](https://www.postgresql.org/docs/12/app-pgdump.html) and [pg_restore](https://www.postgresql.org/docs/12/app-pgrestore.html) reference pages.
 

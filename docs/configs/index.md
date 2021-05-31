@@ -9,3 +9,5 @@ Configurations and setup of other services.
 [> SSH-key](sshkey.md)
 
 [> CEPH](ceph.md)
+
+[> OAI-PMH](oai-pmh.md)

@@ -45,6 +45,7 @@ nav:
     - PostgreSQL: 'configs/postgresql.md'
     - SSH-key: 'configs/sshkey.md'
     - CEPH: 'configs/ceph.md'
+    - OAI-PMH: 'configs/oai-pmh.md'
 # Customization
 extra:
   social:

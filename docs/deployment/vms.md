@@ -50,7 +50,7 @@ we will cover one of these stage.
 ```yml
   script:
     - echo "################################"
-    - ssh $TEST_01_DOMAIN "eval '$(cat ./scripts.sh)'"
+    - ssh $TEST_01_DOMAIN "eval '$(cat ./scripts-test.sh)'"
 ```
 
 Only run for branch ```schedules```:
@@ -80,20 +80,45 @@ invenio01-test:
     - chmod 644 ~/.ssh/known_hosts
   script:
     - echo "################################"
-    - ssh $TEST_01_DOMAIN "eval '$(cat ./scripts.sh)'"
+    - ssh $TEST_01_DOMAIN "eval '$(cat ./scripts-test.sh)'"
   only:
     - schedules
   tags:
    - shell
 ```
 
-### scripts.sh
-Is a helper file for deployment, and used by `.gitlab-ci.yml`. It contains instruction for update/upgrade commands.
+### scripts-().sh file
+**scripts-test.sh** & **scripts-prod.sh** is a helper files for deployment, and used by
+`.gitlab-ci.yml`. It contains instruction for update/upgrade commands.
+And a `curl` check if nginx server is responding.
 
 ```bash
+echo "################################################"
+echo "Run update & upgrade scripts."
+
 export DEBIAN_FRONTEND=noninteractive
 apt-get update && apt-get -q -y upgrade
+
+
+echo "################################################"
+echo "Check if nginx server is running."
+
+nginxserver=********:8080
+
+check=$(curl -s -w "%{http_code}\n" -L "$nginxserver" -o /dev/null)
+if [[ $check == 200 || $check == 403 ]]
+then
+    # Server is online
+    echo "Server is online"
+    exit 0
+else
+    # Server is offline or not working correctly
+    echo "Server is offline or not working correctly"
+    exit 1
+fi
+
 ```
+
 
 ## Configure root access to VMS.
 The `update` & `upgrade` shell commands require root access to the virtual machines.

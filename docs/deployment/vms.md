@@ -124,7 +124,7 @@ fi
 The `update` & `upgrade` shell commands require root access to the virtual machines.
 We are using ssh-keys to access the virtual machines with root permission.
 
-Please see the [SSH-key configuration](/configs/sshkey/) for further details.
+Please see the [SSH-key configuration](https://tu-graz-library.github.io/docs-repository/configs/sshkey/) for further details.
 
 ## Pipeline schedules
 Now that we have our `scripts` and `pipeline configuration` ready, lets configure [Gitlab pipeline schedules](https://docs.gitlab.com/ee/ci/pipelines/schedules.html).

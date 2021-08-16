@@ -188,7 +188,7 @@ with
 {%- endblock javascript %}
 ```
 
-#### Adding Search Function
+#### Adding Render Function
 Next, in `invenio_theme_tugraz/deposits.py` we define a function which will render the previously created template and pass the `searchbar_config` as argument.
 ```python
 @login_required
@@ -206,3 +206,42 @@ All that is left is to add a URL rule, so that the new function is called instea
 `app.add_url_rule("/uploads", "deposit_search", deposit_search)`t
 
 Now invenio-rdm will use the new user record search template, which will use the new search app.
+
+
+
+## Record Landing Page
+Since we do not need to add additional functionality to the record landing page, there is no need for new components or updating the webpack file. We will simply add and modify the html file and add the URL route. If there is need for additional functionality, follow the steps from the search page guide.
+
+#### Adding Search Template
+Create the following file `invenio_theme_tugraz/templates/invenio_theme_tugraz/records/detail.html` with the content of the [base record detail template from invenio-app-rdm ](https://github.com/inveniosoftware/invenio-app-rdm/blob/v6.0.2/invenio_app_rdm/records_ui/templates/semantic-ui/invenio_app_rdm/records/detail.html).
+
+Modify the template file as you see fit.
+
+#### Adding Render Function
+Next, in `invenio_theme_tugraz/deposits.py` we define a function which will render the previously created template and pass arguments needed by the template.
+```python
+@pass_is_preview
+@pass_record_or_draft
+@pass_record_files
+def record_detail(record=None, files=None, pid_value=None, is_preview=False):
+    """Record detail page (aka landing page)."""
+    files_dict = None if files is None else files.to_dict()
+
+    return render_template(
+        "invenio_theme_tugraz/records/detail.html",
+        record=UIJSONSerializer().serialize_object_to_dict(record.to_dict()),
+        pid=pid_value,
+        files=files_dict,
+        permissions=record.has_permissions_to(['edit', 'new_version', 'manage',
+                                               'update_draft', 'read_files']),
+        is_preview=is_preview,
+    )
+```
+
+#### Adding URL Route
+All that is left is to add a URL rule, so that the new function is called instead of the one from the base implementation. In `invenio_theme_tugraz/ext.py` import the previously defined function and inside the `init_app` function add:
+
+`app.add_url_rule("/records/<pid_value>", "record_detail", record_detail)`
+
+Now invenio-rdm will use the new record detail template when displaying a record.
+

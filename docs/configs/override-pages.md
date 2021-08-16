@@ -1,6 +1,15 @@
 # Override Pages
 In some cases, the default pages do not offer all the functionality or modification possibilities needed. It is possible to override the pages, though this should be the last resort as it increases resources needed for maintainability.
 
+! IMPORTANT: This is valid for `invenio-app-rdm==v6.0.2` !
+
+
+### Install Module Again
+In order to pick up all the new files and to rebuild webpack, it is necessary to install `invenio-theme-tugraz` again. If no such changes happened, this step can be skipped.
+
+`invenio-cli packages install /path/to/module`
+
+
 ### JavaScript and React Components
 In order to provide functionality, all the needed components either have to be created or imported from other modules. To achieve this, create or update the following file `invenio_theme_tugraz/assets/semantic-ui/js/invenio_theme_tugraz/{componentToOverride}/components.js`. This will make it easier to keep a good overview of the dependencies.
 
@@ -74,120 +83,24 @@ Adding the following line in the `invenio_theme_tugraz/webpack.py` file, under t
             }, ...
 ```
 
-
 #### Adding Search Template
 To make use of the new search, a search template will be added. It will import our search app as previously defined in webpack.
 To achieve this, we will simply copy the current search page from invenio-rdm and replace the standard search app import with ours.
-Create the following file `invenio_theme_tugraz/templates/invenio_theme_tugraz/search.html` with content
-```html
-{#
-  Copyright (C) 2020 CERN.
-  Copyright (C) 2020 Northwestern University.
-  Copyright (C) 2021 Graz University of Technology.
+Create the following file `invenio_theme_tugraz/templates/invenio_theme_tugraz/search.html` with the content of the [base search template from invenio-app-rdm ](https://github.com/inveniosoftware/invenio-app-rdm/blob/v6.0.2/invenio_app_rdm/records_ui/templates/semantic-ui/invenio_app_rdm/records/search.html).
 
-  Invenio App RDM is free software; you can redistribute it and/or modify it
-  under the terms of the MIT License; see LICENSE file for more details.
-#}
-{%- set title = _("Search results") %}
-{%- extends config.BASE_TEMPLATE %}
-
+In that file, all that has to be done is to replace 
+```python
 {%- block javascript %}
     {{ super() }}
-    <!-- That's the important part! -->
+    {{ webpack['invenio-app-rdm-search.js'] }}
+{%- endblock %}
+```
+with
+```python
+{%- block javascript %}
+    {{ super() }}
     {{ webpack['invenio-theme-tugraz-rdm-search.js'] }}
 {%- endblock %}
-
-{%- block page_body %}
-
-<div data-invenio-search-config='{
-  "aggs": [
-    {
-      "aggName": "access_status",
-      "field": "access.status",
-      "title": "{{_("Access status")}}"
-    },
-    {
-      "aggName": "resource_type",
-      "field": "resource_type.type",
-      "title": "{{_("Resource type")}}",
-      "childAgg": {
-        "aggName": "subtype",
-        "field": "resource_type.subtype",
-        "title": "{{_("Resource type")}}"
-      }
-    },
-    {
-      "aggName": "languages",
-      "field": "languages",
-      "title": "{{_("Languages")}}"
-    }
-  ],
-  "appId": "rdm-search",
-  "initialQueryState": {
-    "hiddenParams": null,
-    "size": 10,
-    "page": 1,
-    "sortBy": "bestmatch"
-  },
-  "layoutOptions": {
-    "gridView": false,
-    "listView": true
-  },
-  "paginationOptions": {
-    "defaultValue": 10,
-    "resultsPerPage": [
-      {
-        "text": "10",
-        "value": 10
-      },
-      {
-        "text": "20",
-        "value": 20
-      },
-      {
-        "text": "50",
-        "value": 50
-      }
-    ]
-  },
-  "searchApi": {
-    "axios": {
-      "headers": {
-        "Accept": "application/vnd.inveniordm.v1+json"
-      },
-      "url": "/api/records",
-      "withCredentials": true
-    },
-    "invenio": {
-      "requestSerializer": "InvenioRecordsResourcesRequestSerializer"
-    }
-  },
-  "sortOrderDisabled": true,
-  "defaultSortingOnEmptyQueryString": {
-    "sortBy": "newest"
-  },
-  "sortOptions": [
-    {
-      "sortBy": "bestmatch",
-      "text": "{{_("Best match")}}"
-    },
-    {
-      "sortBy": "newest",
-      "text": "{{_("Newest")}}"
-    },
-    {
-      "sortBy": "oldest",
-      "text": "{{_("Oldest")}}"
-    },
-    {
-      "sortBy": "version",
-      "text": "{{_("Version")}}"
-    }
-  ]
-}'></div>
-
-{%- endblock page_body %}
-
 ```
 
 #### Override Config Variable
@@ -196,5 +109,100 @@ In `invenio_theme_tugraz/config.py` add or override the following line:
 ```python
 SEARCH_UI_SEARCH_TEMPLATE = "invenio_theme_tugraz/search.html"
 ```
-
 Now invenio-rdm will use the new search template, which will use the new search app.
+
+
+### User Record Search
+The component to be overridden is `user_records_search` so the path for this looks like `invenio_theme_tugraz/assets/semantic-ui/js/invenio_theme_tugraz/user_records_search/`.
+Place the components in `invenio_theme_tugraz/assets/semantic-ui/js/invenio_theme_tugraz/user_records_search/components.js`.
+
+#### Creating Search App
+Now that all components have been created or imported, create the following file `invenio_theme_tugraz/assets/semantic-ui/js/invenio_theme_tugraz/user_records_search/index.js`.
+In here, all the previously defined components will be imported and the search app will be defined.
+
+```js
+import { createSearchAppInit } from "@js/invenio_search_ui";
+import {
+  RDMRecordResultsListItem,
+  RDMRecordResultsGridItem,
+  RDMDepositResults,
+  RDMEmptyResults,
+  RDMUserRecordsSearchLayout,
+} from "./components";
+import {
+  RDMBucketAggregationElement,
+  RDMCountComponent,
+  RDMRecordFacets,
+  RDMRecordFacetsValues,
+  RDMRecordSearchBarElement,
+  RDMToggleComponent,
+} from "../search/components";
+
+const initSearchApp = createSearchAppInit({
+  "BucketAggregation.element": RDMBucketAggregationElement,
+  "BucketAggregationValues.element": RDMRecordFacetsValues,
+  "Count.element": RDMCountComponent,
+  "EmptyResults.element": RDMEmptyResults,
+  "ResultsList.item": RDMRecordResultsListItem,
+  "ResultsGrid.item": RDMRecordResultsGridItem,
+  "SearchApp.facets": RDMRecordFacets,
+  "SearchApp.layout": RDMUserRecordsSearchLayout,
+  "SearchApp.results": RDMDepositResults,
+  "SearchBar.element": RDMRecordSearchBarElement,
+  "BucketAggregation.element": RDMBucketAggregationElement,
+  "BucketAggregationValues.element": RDMRecordFacetsValues,
+  "SearchFilters.ToggleComponent": RDMToggleComponent,
+});
+```
+
+#### Adding to webpack
+Now that the functionality is done, it is important to add it to webpack. This makes it accessible to templates.
+Adding the following line in the `invenio_theme_tugraz/webpack.py` file, under the `semantic-ui` entries will do the trick. It will look something like this:
+```python
+"semantic-ui": dict(
+            entry={
+                "invenio-theme-tugraz-theme": "./less/invenio_theme_tugraz/theme.less",
+                "invenio-theme-tugraz-js": "./js/invenio_theme_tugraz/theme.js",
+                # add user record search component
+                'invenio-theme-tugraz-rdm-user-records-search': './js/invenio_theme_tugraz/user_records_search/index.js',
+            }, ...
+```
+
+#### Adding Search Template
+To make use of the new search, a search template will be added. It will import our search app as previously defined in webpack.
+To achieve this, we will simply copy the current search page from invenio-rdm and replace the standard search app import with ours.
+Create the following file `invenio_theme_tugraz/templates/invenio_theme_tugraz/records/search_deposit.html` with the content of the [base user records search template from invenio-app-rdm ](https://github.com/inveniosoftware/invenio-app-rdm/blob/v6.0.2/invenio_app_rdm/records_ui/templates/semantic-ui/invenio_app_rdm/records/search_deposit.html).
+
+In that file, all that has to be done is to replace 
+```python
+{%- block javascript %}
+  {{ super() }}
+  {{ webpack['invenio-app-rdm-user-records-search.js'] }}
+{%- endblock javascript %}
+```
+with
+```python
+{%- block javascript %}
+  {{ super() }}
+  {{ webpack['invenio-theme-tugraz-rdm-user-records-search.js'] }}
+{%- endblock javascript %}
+```
+
+#### Adding Search Function
+Next, in `invenio_theme_tugraz/deposits.py` we define a function which will render the previously created template and pass the `searchbar_config` as argument.
+```python
+@login_required
+def deposit_search():
+    """List of user deposits page."""
+    return render_template(
+        "invenio_theme_tugraz/records/search_deposit.html",
+        searchbar_config=dict(searchUrl=get_search_url()),
+    )
+```
+
+#### Adding URL Route
+All that is left is to add a URL rule, so that the new function is called instead of the one from the base implementation. In `invenio_theme_tugraz/ext.py` import the previously defined function and inside the `init_app` function add:
+
+`app.add_url_rule("/uploads", "deposit_search", deposit_search)`t
+
+Now invenio-rdm will use the new user record search template, which will use the new search app.

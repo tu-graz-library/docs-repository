@@ -45,6 +45,8 @@ nav:
     - PostgreSQL: 'configs/postgresql.md'
     - SSH-key: 'configs/sshkey.md'
     - CEPH: 'configs/ceph.md'
+    - Override Pages: 'configs/override-pages.md'
+
 # Customization
 extra:
   social:

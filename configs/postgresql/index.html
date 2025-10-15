@@ -1,0 +1,1555 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Repository Documentation">
+      
+      
+        <meta name="author" content="Mojib Wali">
+      
+      
+        <link rel="canonical" href="https://tu-graz-library.github.io/docs-repository/configs/postgresql/">
+      
+      
+        <link rel="prev" href="../gitlab-runner/">
+      
+      
+        <link rel="next" href="../sshkey/">
+      
+      
+      <link rel="icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>PostgreSQL - Repository Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#postgresql" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Repository Documentation" class="md-header__button md-logo" aria-label="Repository Documentation" data-md-component="logo">
+      
+  <img src="../../images/tug_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Repository Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PostgreSQL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../deployment/" class="md-tabs__link">
+          
+  
+  
+  Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../services/pgadmin/" class="md-tabs__link">
+          
+  
+  
+  Services
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Configs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../features/" class="md-tabs__link">
+          
+  
+  
+  Features
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Repository Documentation" class="md-nav__button md-logo" aria-label="Repository Documentation" data-md-component="logo">
+      
+  <img src="../../images/tug_logo.png" alt="logo">
+
+    </a>
+    Repository Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Deployment
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Deployment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Production instance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Instance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/dev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development instance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/deploy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/vms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VMs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/pgadmin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    pgAdmin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configurations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitlab-runner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gitlab Runner
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#users-and-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Users and Database
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allow-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Allow access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listen-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listen address
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test connection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup &amp; Restore
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backup &amp; Restore">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-a-single-postgresql-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup a Single PostgreSQL Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore-a-single-postgresql-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore a Single PostgreSQL Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-a-remote-postgresql-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup a Remote PostgreSQL Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore-a-remote-postgresql-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore a Remote PostgreSQL Database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sshkey/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH-key
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ceph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CEPH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../override-pages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Override Pages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Features
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Features
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Features
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/oer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Publications
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Global search
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/curations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Curations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#users-and-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Users and Database
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allow-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Allow access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listen-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listen address
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test connection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup &amp; Restore
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backup &amp; Restore">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-a-single-postgresql-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup a Single PostgreSQL Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore-a-single-postgresql-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore a Single PostgreSQL Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-a-remote-postgresql-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup a Remote PostgreSQL Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore-a-remote-postgresql-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore a Remote PostgreSQL Database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="postgresql">PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h1>
+<p>PostgreSQL also known as Postgres, is a free and open-source relational database management system (RDBMS) emphasizing extensibility and SQL compliance.</p>
+<p>In this guideline we will take a look on the Postgresql database setup and configurations for <a href="https://repository.tugraz.at">Repository</a> Production instance. Using PostgreSQL Version <code>11</code>, and VM <code>invenio03-prod.tugraz.at</code></p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>apt-get<span class="w"> </span>update
+$<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>postgresql<span class="w"> </span>postgresql-contrib
+</code></pre></div>
+
+<p>By default PostgreSQL has a default user <code>postgres</code>. We can access the database with this user <code>su postgres</code> and access the shell with  <code>psql</code>.</p>
+<p>To change the <code>postgres</code> user password:</p>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>su<span class="w"> </span>postgres
+<span class="o">(</span>postgres<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>psql
+<span class="o">(</span>postgres<span class="o">)</span><span class="w"> </span>ALTER<span class="w"> </span>USER<span class="w"> </span>postgres<span class="w"> </span>WITH<span class="w"> </span>PASSWORD<span class="w"> </span><span class="s1">&#39;************&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<h2 id="users-and-database">Users and Database<a class="headerlink" href="#users-and-database" title="Permanent link">&para;</a></h2>
+<p>Create a admin user:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="o">&lt;</span><span class="n">USERNAME</span><span class="o">&gt;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="s1">&#39;************&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<p>Give the user permissions:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="ss">&quot;USERNAME&quot;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">SUPERUSER</span><span class="p">;</span>
+</code></pre></div>
+
+<p>Create Database:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">DATABASE_NAME</span><span class="p">;</span>
+</code></pre></div>
+
+<p>Grant permissions of database for created user:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="ss">&quot;DATABASE_NAME&quot;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">USER</span><span class="p">;</span>
+</code></pre></div>
+
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<h3 id="allow-access">Allow access<a class="headerlink" href="#allow-access" title="Permanent link">&para;</a></h3>
+<p>Allow remote connection to the webserver VMs.</p>
+<p>Open the <code>/etc/postgresql/11/main/pg_hba.conf</code> file and edit it as below:</p>
+<div class="codehilite"><pre><span></span><code># TYPE  DATABASE        USER         ADDRESS              METHOD
+host    all             &lt;user&gt;       ********/28          trust
+host    all             &lt;user&gt;       ********/28          trust
+host    all             &lt;user&gt;       repository.tugraz.at trust
+</code></pre></div>
+
+<h3 id="listen-address">Listen address<a class="headerlink" href="#listen-address" title="Permanent link">&para;</a></h3>
+<p>Listen to other VMs.</p>
+<p>Open the <code>/etc/postgresql/11/main/postgresql.conf</code> file and edit it as below:</p>
+<div class="codehilite"><pre><span></span><code>#------------------------------------------------------------------------------
+# CONNECTIONS AND AUTHENTICATION
+#------------------------------------------------------------------------------
+
+# - Connection Settings -
+
+<span class="gd">- #listen_addresses = &#39;localhost&#39;         # what IP address(es) to listen on;</span>
+<span class="gi">+ listen_addresses = &#39;&lt;ip addresses&gt;&#39;     # what IP address(es) to listen on;</span>
+</code></pre></div>
+
+<h3 id="test-connection">Test connection<a class="headerlink" href="#test-connection" title="Permanent link">&para;</a></h3>
+<p>Access the database from one of the configured machines.</p>
+<div class="admonition note">
+<p class="admonition-title">psql</p>
+<p>Make sure you have postgres client installed.</p>
+</div>
+<div class="codehilite"><pre><span></span><code>psql<span class="w"> </span>-U<span class="w"> </span>USERNAME<span class="w"> </span>-d<span class="w"> </span>DATABASE<span class="w"> </span>-h<span class="w"> </span>HOST_IP
+</code></pre></div>
+
+<h2 id="backup-restore">Backup &amp; Restore<a class="headerlink" href="#backup-restore" title="Permanent link">&para;</a></h2>
+<h3 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A server running Linux operating system with PostgreSQL installed.</li>
+<li>A root password is setup on your server.</li>
+</ul>
+<h3 id="backup-a-single-postgresql-database">Backup a Single PostgreSQL Database<a class="headerlink" href="#backup-a-single-postgresql-database" title="Permanent link">&para;</a></h3>
+<p>You will need to use pg_dump tool to backup a PostgreSQL database. This tool will dump all content of a database into a single file.</p>
+<p>The basic syntax to backup a PostgreSQL database is shown below:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pg_dump</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="w"> </span><span class="p">[</span><span class="k">option</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">database_name</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">backup_name</span><span class="p">]</span>
+</code></pre></div>
+
+<p>A brief explanation of all available option is shown below:</p>
+<ul>
+<li>-U : Specify the PostgreSQL username.</li>
+<li>-W : Force pg_dump command to ask for a password.</li>
+<li>-F : Specify the format of the output file.</li>
+<li>-f : Specify the output file.</li>
+<li>p : Plain text SQL script.</li>
+<li>c : Specify the custom formate.</li>
+<li>d : Specify the directory format.</li>
+<li>t : Specify tar format archive file.</li>
+</ul>
+<p>For example, create a backup of the PostgreSQL database named db1 in the tar format, run the following command:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pg_dump</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="n">db1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">db1</span><span class="p">.</span><span class="n">tar</span>
+</code></pre></div>
+
+<p>If you want to save the backup in a Plain-text (SQL), run the following command:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pg_dump</span><span class="w"> </span><span class="n">db1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">db1_backup</span><span class="p">.</span><span class="k">sql</span>
+</code></pre></div>
+
+<p>If you want to save the backup in a directory format, run the following command:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pg_dump</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="n">db1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">db1_backup</span>
+</code></pre></div>
+
+<p>If your database is very large and wants to generate a small backup file then you can use pg_dump with a compression tool such as gzip to compress the database backup.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pg_dump</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="n">db1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">gzip</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">db1</span><span class="p">.</span><span class="n">gz</span>
+</code></pre></div>
+
+<p>You can also reduce the database backup time by dumping number_of_jobs tables simultaneously using the -j flag.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pg_dump</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="n">db1</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">db1_backup</span>
+</code></pre></div>
+
+<p><strong>Note</strong> : Also keep in mind that the above command will reduce the time of the backup but it also increases the load on the server.</p>
+<h3 id="restore-a-single-postgresql-database">Restore a Single PostgreSQL Database<a class="headerlink" href="#restore-a-single-postgresql-database" title="Permanent link">&para;</a></h3>
+<p>If you choose custom, directory, or archive format when taking a database backup. Then, you will need to use pg_restore command to restore your database.</p>
+<p>The basic syntax to restore a database with pg_restore is shown below:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pg_restore</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="w"> </span><span class="p">[</span><span class="k">option</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">db_name</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">db_backup</span><span class="p">]</span>
+</code></pre></div>
+
+<p>A brief explanation of each option is shown below:</p>
+<ul>
+<li>-c : Used to drop database objects before recreating them.</li>
+<li>-C : Used to create a database before restoring into it.</li>
+<li>-e : Exit if an error has been encountered.</li>
+<li>-F format : Used to specify the format of the archive.</li>
+</ul>
+<p>For example, restore a backup from the file db1.tar, you will need to consider two options:</p>
+<ol>
+<li>If the database already exists.</li>
+<li>The format of your backup.</li>
+</ol>
+<p>If your database already exists, you can restore it with the following command:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pg_restore</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="o">-</span><span class="n">Ft</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="n">db1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">db1</span><span class="p">.</span><span class="n">tar</span>
+</code></pre></div>
+
+<p>If your database is not exists, you can restore it with the following command:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pg_restore</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="o">-</span><span class="n">Ft</span><span class="w"> </span><span class="o">-</span><span class="k">C</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="n">db1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">db1</span><span class="p">.</span><span class="n">tar</span>
+</code></pre></div>
+
+<h3 id="backup-a-remote-postgresql-database">Backup a Remote PostgreSQL Database<a class="headerlink" href="#backup-a-remote-postgresql-database" title="Permanent link">&para;</a></h3>
+<p>In order to perform the database backup on the remote PostgreSQL server. You will need to configure your PostgreSQL server to allow remote connection.</p>
+<p>The basic syntax to backup a remote PostgreSQL database is shown below:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pg_dump</span><span class="w"> </span><span class="o">-</span><span class="n">h</span><span class="w"> </span><span class="p">[</span><span class="n">remote</span><span class="o">-</span><span class="n">postgres</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">ip</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="w"> </span><span class="p">[</span><span class="k">option</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">database_name</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">backup_name</span><span class="p">]</span>
+</code></pre></div>
+
+<p>For example, create a backup of the PostgreSQL database on the remote server ( 192.168.0.100 ) with name remote_db1 in the tar format, run the following command:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pg_dump</span><span class="w"> </span><span class="o">-</span><span class="n">h</span><span class="w"> </span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">100</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="n">remote_db1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">remote_db1</span><span class="p">.</span><span class="n">tar</span>
+</code></pre></div>
+
+<h3 id="restore-a-remote-postgresql-database">Restore a Remote PostgreSQL Database<a class="headerlink" href="#restore-a-remote-postgresql-database" title="Permanent link">&para;</a></h3>
+<p>The basic syntax to restore a remote PostgreSQL database is shown below:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pg_restore</span><span class="w"> </span><span class="o">-</span><span class="n">h</span><span class="w"> </span><span class="p">[</span><span class="n">remote</span><span class="o">-</span><span class="n">postgres</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">ip</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="w"> </span><span class="p">[</span><span class="k">option</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">database_name</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">[</span><span class="n">backup_name</span><span class="p">]</span>
+</code></pre></div>
+
+<p>For example, restore a database from the file remote_db1.tar on the remote server ( 192.168.0.100 ), run the following command:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pg_restore</span><span class="w"> </span><span class="o">-</span><span class="n">h</span><span class="w"> </span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">100</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="o">-</span><span class="n">Ft</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="n">remote_db1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">remote_db1</span><span class="p">.</span><span class="n">tar</span>
+</code></pre></div>
+
+<p><strong>Note</strong> to restore from plain-text format you need to use <code>psql</code> command instead:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">psql</span><span class="w"> </span><span class="n">db1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">db1_backup</span><span class="p">.</span><span class="k">sql</span>
+</code></pre></div>
+
+<p>For more information, you can see the <a href="https://www.postgresql.org/docs/12/app-pgdump.html">pg_dump</a> and <a href="https://www.postgresql.org/docs/12/app-pgrestore.html">pg_restore</a> reference pages.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+
+
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="footer.title">
+        
+          <a href="../gitlab-runner/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Gitlab Runner
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../sshkey/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                SSH-key
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020-2025 Graz University of Technology
+          </div>
+        
+      </div>
+      
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/tu-graz-library/docs-repository" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

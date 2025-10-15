@@ -26,3 +26,8 @@ In this session, we will explore the services that has been added to make your d
 For more configurations such as How the gitlab-runners are registered? How the Database is setup? And so much more...
 
 [> Configurations](configs/index.md)
+
+## Features
+Get to know the specific features of TU Graz repository
+
+[> Features](features/index.md)

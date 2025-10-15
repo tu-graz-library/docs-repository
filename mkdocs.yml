@@ -10,7 +10,7 @@ site_author: 'Mojib Wali'
 edit_uri: ""
 
 # Copyright
-copyright: 'Copyright &copy; 2020-2024 Graz University of Technology'
+copyright: 'Copyright &copy; 2020-2025 Graz University of Technology'
 
 theme:
   highlightjs: true

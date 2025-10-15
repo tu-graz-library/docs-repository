@@ -46,6 +46,12 @@ nav:
     - SSH-key: 'configs/sshkey.md'
     - CEPH: 'configs/ceph.md'
     - Override Pages: 'configs/override-pages.md'
+  - Features:
+    - Features: 'features/index.md'
+    - OER: 'features/oer.md'
+    - Publications: 'features/publications.md'
+    - Global search: 'features/gs.md'
+    - Curations: 'features/curations.md'
 
 # Customization
 extra:

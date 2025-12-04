@@ -67,3 +67,16 @@ Commands to achieve this:
 invenio roles create administration-rdm-records-curation
 invenio roles add <curator_mail> administration-rdm-records-curation
 ``` 
+
+### Bypass curation
+
+Add the following configuration variable to the `invenio.cfg` file to enable
+bypassing the curation workflow. The list contains roles that can be assigned to
+users.
+
+Ensure that the role exists and assign it to the user who should be allowed to
+bypass the curation workflow.
+
+```
+CURATIONS_PRIVILEGED_ROLES: list[str] = ["bypass-curation"]
+```

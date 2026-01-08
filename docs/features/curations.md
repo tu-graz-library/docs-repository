@@ -77,6 +77,13 @@ users.
 Ensure that the role exists and assign it to the user who should be allowed to
 bypass the curation workflow.
 
+cli
+```
+invenio roles create bypass-curation
+invenio roles add <email> bypass-curation
+``` 
+
+invenio.cfg
 ```
 CURATIONS_PRIVILEGED_ROLES: list[str] = ["bypass-curation"]
 ```

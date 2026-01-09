@@ -1,0 +1,1961 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Repository Documentation">
+      
+      
+        <meta name="author" content="Mojib Wali">
+      
+      
+        <link rel="canonical" href="https://tu-graz-library.github.io/docs-repository/configs/override-pages/">
+      
+      
+        <link rel="prev" href="../ceph/">
+      
+      
+        <link rel="next" href="../../features/">
+      
+      
+      <link rel="icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Override Pages - Repository Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#override-pages" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Repository Documentation" class="md-header__button md-logo" aria-label="Repository Documentation" data-md-component="logo">
+      
+  <img src="../../images/tug_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Repository Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Override Pages
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../deployment/" class="md-tabs__link">
+          
+  
+  
+  Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../services/pgadmin/" class="md-tabs__link">
+          
+  
+  
+  Services
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Configs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../features/" class="md-tabs__link">
+          
+  
+  
+  Features
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Repository Documentation" class="md-nav__button md-logo" aria-label="Repository Documentation" data-md-component="logo">
+      
+  <img src="../../images/tug_logo.png" alt="logo">
+
+    </a>
+    Repository Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Deployment
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Deployment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Production instance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Instance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/dev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development instance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/deploy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment/vms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VMs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/pgadmin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    pgAdmin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configurations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitlab-runner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gitlab Runner
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sshkey/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH-key
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ceph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CEPH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Override Pages
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Override Pages
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Main Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-search-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Search App
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-webpack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update webpack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-search-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Search Template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#override-config-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Override Config Variable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-record-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Record Search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Record Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-search-app_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Search App
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-webpack_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update webpack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-search-template_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Search Template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-render-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Render Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-url-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding URL Route
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record-landing-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Record Landing Page
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Record Landing Page">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-detail-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Detail Template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-render-function_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Render Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-url-route_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding URL Route
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deposit-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deposit Page
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deposit Page">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rendering-deposit-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rendering Deposit Form
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-webpack_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update webpack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-deposit-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Deposit Template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-render-function_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Render Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-url-route_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding URL Route
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshoot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshoot
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshoot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manifestkeynotfounderror" class="md-nav__link">
+    <span class="md-ellipsis">
+      ManifestKeyNotFoundError
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Features
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Features
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Features
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/oer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Publications
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Global search
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/curations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Curations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Main Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-search-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Search App
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-webpack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update webpack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-search-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Search Template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#override-config-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Override Config Variable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-record-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Record Search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Record Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-search-app_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Search App
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-webpack_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update webpack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-search-template_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Search Template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-render-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Render Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-url-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding URL Route
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record-landing-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Record Landing Page
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Record Landing Page">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-detail-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Detail Template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-render-function_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Render Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-url-route_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding URL Route
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deposit-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deposit Page
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deposit Page">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rendering-deposit-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rendering Deposit Form
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-webpack_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update webpack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-deposit-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Deposit Template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-render-function_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Render Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-url-route_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding URL Route
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshoot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshoot
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshoot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manifestkeynotfounderror" class="md-nav__link">
+    <span class="md-ellipsis">
+      ManifestKeyNotFoundError
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="override-pages">Override Pages<a class="headerlink" href="#override-pages" title="Permanent link">&para;</a></h1>
+<p>In some cases, the default pages do not offer all the functionality or modification possibilities needed. It is possible to override the pages, though this should be the last resort as it increases resources needed for maintainability.</p>
+<p>We will look into how to override some essential pages of <code>invenio-app-rdm</code> with our existing module <code>invenio-theme-tugraz</code>.</p>
+<p>! IMPORTANT: This is valid for <code>invenio-app-rdm==v6.0.2</code> !</p>
+<h2 id="main-search">Main Search<a class="headerlink" href="#main-search" title="Permanent link">&para;</a></h2>
+<p>The component to be overridden is <code>search</code> so the path for this looks like <code>invenio_theme_tugraz/assets/semantic-ui/js/invenio_theme_tugraz/search/</code>.
+Place the components in <code>invenio_theme_tugraz/assets/semantic-ui/js/invenio_theme_tugraz/search/components.js</code>.</p>
+<p>The original file can be found here: <a href="https://github.com/inveniosoftware/invenio-app-rdm/blob/v6.0.2/invenio_app_rdm/theme/assets/semantic-ui/js/invenio_app_rdm/search/components.js">components.js</a></p>
+<h3 id="creating-search-app">Creating Search App<a class="headerlink" href="#creating-search-app" title="Permanent link">&para;</a></h3>
+<p>Now that all components have been created or imported, create the following file <code>invenio_theme_tugraz/assets/semantic-ui/js/invenio_theme_tugraz/search/index.js</code>.
+In here, all the previously defined components will be imported and the search app will be defined.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createSearchAppInit</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@js/invenio_search_ui&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">RDMBucketAggregationElement</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMRecordFacets</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMRecordFacetsValues</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMRecordResultsGridItem</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMRecordResultsListItem</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMRecordSearchBarContainer</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMRecordSearchBarElement</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMToggleComponent</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMCountComponent</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./components&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">initSearchApp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createSearchAppInit</span><span class="p">({</span>
+<span class="w">  </span><span class="s2">&quot;BucketAggregation.element&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMBucketAggregationElement</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;BucketAggregationValues.element&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMRecordFacetsValues</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;ResultsGrid.item&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMRecordResultsGridItem</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;ResultsList.item&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMRecordResultsListItem</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;SearchApp.facets&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMRecordFacets</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;SearchApp.searchbarContainer&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMRecordSearchBarContainer</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;SearchBar.element&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMRecordSearchBarElement</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;SearchFilters.ToggleComponent&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMToggleComponent</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;Count.element&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMCountComponent</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3 id="update-webpack">Update webpack<a class="headerlink" href="#update-webpack" title="Permanent link">&para;</a></h3>
+<p>Now that the functionality is done, it is important to add it to webpack. This makes it accessible to templates.
+Adding the following line in the <code>invenio_theme_tugraz/webpack.py</code> file, under the <code>semantic-ui</code> entries will do the trick. It will look something like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="s2">&quot;semantic-ui&quot;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">entry</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;invenio-theme-tugraz-theme&quot;</span><span class="p">:</span> <span class="s2">&quot;./less/invenio_theme_tugraz/theme.less&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;invenio-theme-tugraz-js&quot;</span><span class="p">:</span> <span class="s2">&quot;./js/invenio_theme_tugraz/theme.js&quot;</span><span class="p">,</span>
+                <span class="c1"># add search component</span>
+                <span class="s1">&#39;invenio-theme-tugraz-rdm-search&#39;</span><span class="p">:</span> <span class="s1">&#39;./js/invenio_theme_tugraz/search/index.js&#39;</span><span class="p">,</span>
+            <span class="p">},</span> <span class="o">...</span>
+</code></pre></div>
+
+<h3 id="adding-search-template">Adding Search Template<a class="headerlink" href="#adding-search-template" title="Permanent link">&para;</a></h3>
+<p>To make use of the new search, a search template will be added. It will import our search app as previously defined in webpack.
+To achieve this, we will simply copy the current search page from invenio-rdm and replace the standard search app import with ours.
+Create the following file <code>invenio_theme_tugraz/templates/invenio_theme_tugraz/search.html</code> with the content of the <a href="https://github.com/inveniosoftware/invenio-app-rdm/blob/v6.0.2/invenio_app_rdm/records_ui/templates/semantic-ui/invenio_app_rdm/records/search.html">base search template from invenio-app-rdm </a>.</p>
+<p>In that file, all that has to be done is to replace the import:</p>
+<div class="codehilite"><pre><span></span><code>{%- block javascript %}
+<span class="w"> </span> {{ super() }}
+<span class="gd">- {{ webpack[&#39;invenio-app-rdm-search.js&#39;] }}</span>
+<span class="gi">+ {{ webpack[&#39;invenio-theme-tugraz-rdm-search.js&#39;] }}</span>
+{%- endblock %}
+</code></pre></div>
+
+<h3 id="override-config-variable">Override Config Variable<a class="headerlink" href="#override-config-variable" title="Permanent link">&para;</a></h3>
+<p>Finally, invenio-rdm must know that it should use our new template for the search. This can be achieved by overriding the config variable <code>SEARCH_UI_SEARCH_TEMPLATE</code>.
+In <code>invenio_theme_tugraz/config.py</code> add or override the following line:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">SEARCH_UI_SEARCH_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;invenio_theme_tugraz/search.html&quot;</span>
+</code></pre></div>
+
+<p>Now invenio-rdm will use the new search template, which will use the new search app.</p>
+<h2 id="user-record-search">User Record Search<a class="headerlink" href="#user-record-search" title="Permanent link">&para;</a></h2>
+<p>The component to be overridden is <code>user_records_search</code> so the path for this looks like <code>invenio_theme_tugraz/assets/semantic-ui/js/invenio_theme_tugraz/user_records_search/</code>.
+Place the components in <code>invenio_theme_tugraz/assets/semantic-ui/js/invenio_theme_tugraz/user_records_search/components.js</code>.</p>
+<p>The original file can be found here: <a href="https://github.com/inveniosoftware/invenio-app-rdm/blob/v6.0.2/invenio_app_rdm/theme/assets/semantic-ui/js/invenio_app_rdm/user_records_search/components.js">components.js</a></p>
+<h3 id="creating-search-app_1">Creating Search App<a class="headerlink" href="#creating-search-app_1" title="Permanent link">&para;</a></h3>
+<p>Now that all components have been created or imported, create the following file <code>invenio_theme_tugraz/assets/semantic-ui/js/invenio_theme_tugraz/user_records_search/index.js</code>.
+In here, all the previously defined components will be imported and the search app will be defined.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createSearchAppInit</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@js/invenio_search_ui&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">RDMRecordResultsListItem</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMRecordResultsGridItem</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMDepositResults</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMEmptyResults</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMUserRecordsSearchLayout</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./components&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">RDMBucketAggregationElement</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMCountComponent</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMRecordFacets</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMRecordFacetsValues</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMRecordSearchBarElement</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">RDMToggleComponent</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../search/components&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">initSearchApp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createSearchAppInit</span><span class="p">({</span>
+<span class="w">  </span><span class="s2">&quot;BucketAggregation.element&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMBucketAggregationElement</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;BucketAggregationValues.element&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMRecordFacetsValues</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;Count.element&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMCountComponent</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;EmptyResults.element&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMEmptyResults</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;ResultsList.item&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMRecordResultsListItem</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;ResultsGrid.item&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMRecordResultsGridItem</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;SearchApp.facets&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMRecordFacets</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;SearchApp.layout&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMUserRecordsSearchLayout</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;SearchApp.results&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMDepositResults</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;SearchBar.element&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMRecordSearchBarElement</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;BucketAggregation.element&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMBucketAggregationElement</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;BucketAggregationValues.element&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMRecordFacetsValues</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;SearchFilters.ToggleComponent&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">RDMToggleComponent</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3 id="update-webpack_1">Update webpack<a class="headerlink" href="#update-webpack_1" title="Permanent link">&para;</a></h3>
+<p>Now that the functionality is done, it is important to add it to webpack. This makes it accessible to templates.
+Adding the following line in the <code>invenio_theme_tugraz/webpack.py</code> file, under the <code>semantic-ui</code> entries will do the trick. It will look something like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="s2">&quot;semantic-ui&quot;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">entry</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;invenio-theme-tugraz-theme&quot;</span><span class="p">:</span> <span class="s2">&quot;./less/invenio_theme_tugraz/theme.less&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;invenio-theme-tugraz-js&quot;</span><span class="p">:</span> <span class="s2">&quot;./js/invenio_theme_tugraz/theme.js&quot;</span><span class="p">,</span>
+                <span class="c1"># add user record search component</span>
+                <span class="s1">&#39;invenio-theme-tugraz-rdm-user-records-search&#39;</span><span class="p">:</span> <span class="s1">&#39;./js/invenio_theme_tugraz/user_records_search/index.js&#39;</span><span class="p">,</span>
+            <span class="p">},</span> <span class="o">...</span>
+</code></pre></div>
+
+<h3 id="adding-search-template_1">Adding Search Template<a class="headerlink" href="#adding-search-template_1" title="Permanent link">&para;</a></h3>
+<p>To make use of the new search, a search template will be added. It will import our search app as previously defined in webpack.
+To achieve this, we will simply copy the current search page from invenio-rdm and replace the standard search app import with ours.
+Create the following file <code>invenio_theme_tugraz/templates/invenio_theme_tugraz/records/search_deposit.html</code> with the content of the <a href="https://github.com/inveniosoftware/invenio-app-rdm/blob/v6.0.2/invenio_app_rdm/records_ui/templates/semantic-ui/invenio_app_rdm/records/search_deposit.html">base user records search template from invenio-app-rdm </a>.</p>
+<p>In that file, all that has to be done is to replace the import:</p>
+<div class="codehilite"><pre><span></span><code>{%- block javascript %}
+<span class="w"> </span> {{ super() }}
+<span class="gd">- {{ webpack[&#39;invenio-app-rdm-user-records-search.js&#39;] }}</span>
+<span class="gi">+ {{ webpack[&#39;invenio-theme-tugraz-rdm-user-records-search.js&#39;] }}</span>
+{%- endblock javascript %}
+</code></pre></div>
+
+<h3 id="adding-render-function">Adding Render Function<a class="headerlink" href="#adding-render-function" title="Permanent link">&para;</a></h3>
+<p>Next, in <code>invenio_theme_tugraz/deposits.py</code> we define a function which will render the previously created template and pass the <code>searchbar_config</code> as argument.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">render_template</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">flask_login</span><span class="w"> </span><span class="kn">import</span> <span class="n">login_required</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">invenio_app_rdm.records_ui.views.deposits</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_search_url</span>
+
+
+<span class="nd">@login_required</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deposit_search</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;List of user deposits page.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span>
+        <span class="s2">&quot;invenio_theme_tugraz/records/search_deposit.html&quot;</span><span class="p">,</span>
+        <span class="n">searchbar_config</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">searchUrl</span><span class="o">=</span><span class="n">get_search_url</span><span class="p">()),</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+<h3 id="adding-url-route">Adding URL Route<a class="headerlink" href="#adding-url-route" title="Permanent link">&para;</a></h3>
+<p>All that is left is to add a URL rule, so that the new function is called instead of the one from the base implementation. In <code>invenio_theme_tugraz/ext.py</code> import the previously defined function</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">invenio_theme_tugraz.deposits</span><span class="w"> </span><span class="kn">import</span> <span class="n">deposit_search</span>
+</code></pre></div>
+
+<p>and inside the <code>init_app</code> function add:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="s2">&quot;/uploads&quot;</span><span class="p">,</span> <span class="s2">&quot;deposit_search&quot;</span><span class="p">,</span> <span class="n">deposit_search</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Now invenio-rdm will use the new user record search template, which will use the new search app.</p>
+<h2 id="record-landing-page">Record Landing Page<a class="headerlink" href="#record-landing-page" title="Permanent link">&para;</a></h2>
+<p>Since we do not need to add additional functionality to the record landing page, there is no need for new components or updating the webpack file. We will simply add and modify the html file and add the URL route. If there is need for additional functionality, follow the steps from the search page guide.</p>
+<h3 id="adding-detail-template">Adding Detail Template<a class="headerlink" href="#adding-detail-template" title="Permanent link">&para;</a></h3>
+<p>Create the following file <code>invenio_theme_tugraz/templates/invenio_theme_tugraz/records/detail.html</code> with the content of the <a href="https://github.com/inveniosoftware/invenio-app-rdm/blob/v6.0.2/invenio_app_rdm/records_ui/templates/semantic-ui/invenio_app_rdm/records/detail.html">base record detail template from invenio-app-rdm </a>.</p>
+<p>Modify the template file as you see fit.</p>
+<h3 id="adding-render-function_1">Adding Render Function<a class="headerlink" href="#adding-render-function_1" title="Permanent link">&para;</a></h3>
+<p>Next, in <code>invenio_theme_tugraz/deposits.py</code> we define a function which will render the previously created template and pass arguments needed by the template.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">render_template</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">invenio_app_rdm.records_ui.views.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">pass_is_preview</span><span class="p">,</span>
+    <span class="n">pass_record_files</span><span class="p">,</span>
+    <span class="n">pass_record_or_draft</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">invenio_rdm_records.resources.serializers</span><span class="w"> </span><span class="kn">import</span> <span class="n">UIJSONSerializer</span>
+
+
+<span class="nd">@pass_is_preview</span>
+<span class="nd">@pass_record_files</span>
+<span class="nd">@pass_record_or_draft</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">record_detail</span><span class="p">(</span><span class="n">record</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pid_value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_preview</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Record detail page (aka landing page).&quot;&quot;&quot;</span>
+    <span class="n">files_dict</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">files</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">files</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span>
+        <span class="s2">&quot;invenio_theme_tugraz/records/detail.html&quot;</span><span class="p">,</span>
+        <span class="n">record</span><span class="o">=</span><span class="n">UIJSONSerializer</span><span class="p">()</span><span class="o">.</span><span class="n">serialize_object_to_dict</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()),</span>
+        <span class="n">pid</span><span class="o">=</span><span class="n">pid_value</span><span class="p">,</span>
+        <span class="n">files</span><span class="o">=</span><span class="n">files_dict</span><span class="p">,</span>
+        <span class="n">permissions</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">has_permissions_to</span><span class="p">([</span><span class="s1">&#39;edit&#39;</span><span class="p">,</span> <span class="s1">&#39;new_version&#39;</span><span class="p">,</span> <span class="s1">&#39;manage&#39;</span><span class="p">,</span>
+                                               <span class="s1">&#39;update_draft&#39;</span><span class="p">,</span> <span class="s1">&#39;read_files&#39;</span><span class="p">]),</span>
+        <span class="n">is_preview</span><span class="o">=</span><span class="n">is_preview</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+<h3 id="adding-url-route_1">Adding URL Route<a class="headerlink" href="#adding-url-route_1" title="Permanent link">&para;</a></h3>
+<p>All that is left is to add a URL rule, so that the new function is called instead of the one from the base implementation. In <code>invenio_theme_tugraz/ext.py</code> import the previously defined function</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">invenio_theme_tugraz.deposits</span><span class="w"> </span><span class="kn">import</span> <span class="n">record_detail</span>
+</code></pre></div>
+
+<p>and inside the <code>init_app</code> function add:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="s2">&quot;/records/&lt;pid_value&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;record_detail&quot;</span><span class="p">,</span> <span class="n">record_detail</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Now invenio-rdm will use the new record detail template when displaying a record.</p>
+<h2 id="deposit-page">Deposit Page<a class="headerlink" href="#deposit-page" title="Permanent link">&para;</a></h2>
+<p>The component to be overridden is <code>deposit</code> so the path for this looks like <code>invenio_theme_tugraz/assets/semantic-ui/js/invenio_theme_tugraz/deposit/</code>.
+Place the components in <code>invenio_theme_tugraz/assets/semantic-ui/js/invenio_theme_tugraz/deposit/RDMDepositForm.js</code>.</p>
+<p>The original file can be found here: <a href="https://github.com/inveniosoftware/invenio-app-rdm/blob/v6.0.2/invenio_app_rdm/theme/assets/semantic-ui/js/invenio_app_rdm/deposit/RDMDepositForm.js">RDMDepositForm.js</a></p>
+<h3 id="rendering-deposit-form">Rendering Deposit Form<a class="headerlink" href="#rendering-deposit-form" title="Permanent link">&para;</a></h3>
+<p>Now that all components have been created or imported, create the following file <code>invenio_theme_tugraz/assets/semantic-ui/js/invenio_theme_tugraz/deposit/index.js</code>.
+In here, all the previously defined components will be imported and the deposit form will be rendered.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ReactDOM</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react-dom&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s2">&quot;semantic-ui-css/semantic.min.css&quot;</span><span class="p">;</span>
+
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getInputFromDOM</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react-invenio-deposit&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">RDMDepositForm</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./RDMDepositForm&quot;</span><span class="p">;</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">RDMDepositForm</span>
+<span class="w">    </span><span class="nx">record</span><span class="o">=</span><span class="p">{</span><span class="nx">getInputFromDOM</span><span class="p">(</span><span class="s2">&quot;deposits-record&quot;</span><span class="p">)}</span>
+<span class="w">    </span><span class="nx">files</span><span class="o">=</span><span class="p">{</span><span class="nx">getInputFromDOM</span><span class="p">(</span><span class="s2">&quot;deposits-record-files&quot;</span><span class="p">)}</span>
+<span class="w">    </span><span class="nx">config</span><span class="o">=</span><span class="p">{</span><span class="nx">getInputFromDOM</span><span class="p">(</span><span class="s2">&quot;deposits-config&quot;</span><span class="p">)}</span>
+<span class="w">    </span><span class="nx">permissions</span><span class="o">=</span><span class="p">{</span><span class="nx">getInputFromDOM</span><span class="p">(</span><span class="s2">&quot;deposits-record-permissions&quot;</span><span class="p">)}</span>
+<span class="w">  </span><span class="o">/&gt;</span><span class="p">,</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;deposit-form&quot;</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<h3 id="update-webpack_2">Update webpack<a class="headerlink" href="#update-webpack_2" title="Permanent link">&para;</a></h3>
+<p>Now that the functionality is done, it is important to add it to webpack. This makes it accessible to templates.
+Adding the following line in the <code>invenio_theme_tugraz/webpack.py</code> file, under the <code>semantic-ui</code> entries will do the trick. It will look something like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="s2">&quot;semantic-ui&quot;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">entry</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;invenio-theme-tugraz-theme&quot;</span><span class="p">:</span> <span class="s2">&quot;./less/invenio_theme_tugraz/theme.less&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;invenio-theme-tugraz-js&quot;</span><span class="p">:</span> <span class="s2">&quot;./js/invenio_theme_tugraz/theme.js&quot;</span><span class="p">,</span>
+                <span class="c1"># add deposit component</span>
+                <span class="s1">&#39;invenio-theme-tugraz-rdm-deposit&#39;</span><span class="p">:</span> <span class="s1">&#39;./js/invenio_theme_tugraz/deposit/index.js&#39;</span><span class="p">,</span>
+            <span class="p">},</span> <span class="o">...</span>
+</code></pre></div>
+
+<h3 id="adding-deposit-template">Adding Deposit Template<a class="headerlink" href="#adding-deposit-template" title="Permanent link">&para;</a></h3>
+<p>To make use of the new deposit form, a template will be added. It will import the deposit form as previously defined in webpack.
+To achieve this, we will simply copy the current deposit page from invenio-rdm and replace the standard deposit form import with ours.
+Create the following file <code>invenio_theme_tugraz/templates/invenio_theme_tugraz/records/deposit.html</code> with the content of the <a href="https://github.com/inveniosoftware/invenio-app-rdm/blob/v6.0.2/invenio_app_rdm/records_ui/templates/semantic-ui/invenio_app_rdm/records/deposit.html">base deposit form template from invenio-app-rdm </a>.</p>
+<p>In that file, all that has to be done is to replace the import:</p>
+<div class="codehilite"><pre><span></span><code>{%- block javascript %}
+<span class="w"> </span> {{ super() }}
+<span class="gd">- {{ webpack[&#39;invenio-app-rdm-deposit.js&#39;] }}</span>
+<span class="gi">+ {{ webpack[&#39;invenio-theme-tugraz-rdm-deposit.js&#39;] }}</span>
+{%- endblock %}
+</code></pre></div>
+
+<h3 id="adding-render-function_2">Adding Render Function<a class="headerlink" href="#adding-render-function_2" title="Permanent link">&para;</a></h3>
+<p>Next, in <code>invenio_theme_tugraz/deposits.py</code> we define two functions which will render the previously created template and pass arguments needed by the template.</p>
+<p>First the create function, which is called when the user wants to create a new record:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">render_template</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">flask_login</span><span class="w"> </span><span class="kn">import</span> <span class="n">login_required</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">invenio_app_rdm.records_ui.views.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">pass_draft</span><span class="p">,</span>
+    <span class="n">pass_draft_files</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">invenio_app_rdm.records_ui.views.deposits</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">get_form_config</span><span class="p">,</span>
+    <span class="n">get_search_url</span><span class="p">,</span>
+    <span class="n">new_record</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">invenio_rdm_records.resources.serializers</span><span class="w"> </span><span class="kn">import</span> <span class="n">UIJSONSerializer</span>
+
+
+<span class="nd">@login_required</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deposit_create</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new deposit.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span>
+        <span class="s2">&quot;invenio_theme_tugraz/records/deposit.html&quot;</span><span class="p">,</span>
+        <span class="n">forms_config</span><span class="o">=</span><span class="n">get_form_config</span><span class="p">(</span><span class="n">createUrl</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;/api/records&quot;</span><span class="p">)),</span>
+        <span class="n">searchbar_config</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">searchUrl</span><span class="o">=</span><span class="n">get_search_url</span><span class="p">()),</span>
+        <span class="n">record</span><span class="o">=</span><span class="n">new_record</span><span class="p">(),</span>
+        <span class="n">files</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">default_preview</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">entries</span><span class="o">=</span><span class="p">[],</span> <span class="n">links</span><span class="o">=</span><span class="p">{}</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+<p>Second the edit function, which is called when the user wants to edit an existing record:</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@login_required</span>
+<span class="nd">@pass_draft</span>
+<span class="nd">@pass_draft_files</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deposit_edit</span><span class="p">(</span><span class="n">draft</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">draft_files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pid_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Edit an existing deposit.&quot;&quot;&quot;</span>
+    <span class="n">record</span> <span class="o">=</span> <span class="n">UIJSONSerializer</span><span class="p">()</span><span class="o">.</span><span class="n">serialize_object_to_dict</span><span class="p">(</span><span class="n">draft</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span>
+        <span class="s2">&quot;invenio_theme_tugraz/records/deposit.html&quot;</span><span class="p">,</span>
+        <span class="n">forms_config</span><span class="o">=</span><span class="n">get_form_config</span><span class="p">(</span><span class="n">apiUrl</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;/api/records/</span><span class="si">{</span><span class="n">pid_value</span><span class="si">}</span><span class="s2">/draft&quot;</span><span class="p">),</span>
+        <span class="n">record</span><span class="o">=</span><span class="n">record</span><span class="p">,</span>
+        <span class="n">files</span><span class="o">=</span><span class="n">draft_files</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
+        <span class="n">searchbar_config</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">searchUrl</span><span class="o">=</span><span class="n">get_search_url</span><span class="p">()),</span>
+        <span class="n">permissions</span><span class="o">=</span><span class="n">draft</span><span class="o">.</span><span class="n">has_permissions_to</span><span class="p">([</span><span class="s1">&#39;new_version&#39;</span><span class="p">])</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+<h3 id="adding-url-route_2">Adding URL Route<a class="headerlink" href="#adding-url-route_2" title="Permanent link">&para;</a></h3>
+<p>All that is left is to add URL rules, so that the new functions are called instead of the ones from the base implementation. In <code>invenio_theme_tugraz/ext.py</code> import the previously defined functions</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">invenio_theme_tugraz.deposits</span><span class="w"> </span><span class="kn">import</span> <span class="n">deposit_create</span><span class="p">,</span> <span class="n">deposit_edit</span>
+</code></pre></div>
+
+<p>and inside the <code>init_app</code> function add:</p>
+<ul>
+<li>For new records: </li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="s2">&quot;/uploads/new&quot;</span><span class="p">,</span> <span class="s2">&quot;deposit_create&quot;</span><span class="p">,</span> <span class="n">deposit_create</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>For editing existing records:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="s2">&quot;/uploads/&lt;pid_value&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;deposit_edit&quot;</span><span class="p">,</span> <span class="n">deposit_edit</span><span class="p">)</span><span class="err">`</span>
+</code></pre></div>
+
+<p>Now invenio-rdm will use the new deposit form, when creating a new record or updating an existing record.</p>
+<h2 id="troubleshoot">Troubleshoot<a class="headerlink" href="#troubleshoot" title="Permanent link">&para;</a></h2>
+<h3 id="manifestkeynotfounderror">ManifestKeyNotFoundError<a class="headerlink" href="#manifestkeynotfounderror" title="Permanent link">&para;</a></h3>
+<ul>
+<li>check if the spelling of the webpack names matches with the import in the template.</li>
+<li>reinstall invenio-theme-tugraz<ul>
+<li>In order to pick up all the new files and to rebuild webpack, it is necessary to install <code>invenio-theme-tugraz</code> again. If no such changes happened, this step can be skipped.</li>
+<li><code>invenio-cli packages install /path/to/invenio-theme-tugraz</code></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+
+
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="footer.title">
+        
+          <a href="../ceph/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                CEPH
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../features/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Features
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020-2025 Graz University of Technology
+          </div>
+        
+      </div>
+      
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/tu-graz-library/docs-repository" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

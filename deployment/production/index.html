@@ -1,0 +1,2202 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Repository Documentation">
+      
+      
+        <meta name="author" content="Mojib Wali">
+      
+      
+        <link rel="canonical" href="https://tu-graz-library.github.io/docs-repository/deployment/production/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../test/">
+      
+      
+      <link rel="icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Production instance - Repository Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#production-instance" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Repository Documentation" class="md-header__button md-logo" aria-label="Repository Documentation" data-md-component="logo">
+      
+  <img src="../../images/tug_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Repository Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Production instance
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../services/pgadmin/" class="md-tabs__link">
+          
+  
+  
+  Services
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../configs/" class="md-tabs__link">
+          
+  
+  
+  Configs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../features/" class="md-tabs__link">
+          
+  
+  
+  Features
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Repository Documentation" class="md-nav__button md-logo" aria-label="Repository Documentation" data-md-component="logo">
+      
+  <img src="../../images/tug_logo.png" alt="logo">
+
+    </a>
+    Repository Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Deployment
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Deployment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Production instance
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Production instance
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#web-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Server
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Web Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      docker-compose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-ciyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      .gitlab-ci.yml
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=".gitlab-ci.yml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build_prod" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_prod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prod_one-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      prod_one-deploy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prod_two-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      prod_two-deploy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-gitlab-ciyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full .gitlab-ci.yml
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elasticsearch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elasticsearch
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elasticsearch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-prodsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      deploy-prod.sh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-ciyml_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      .gitlab-ci.yml
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=".gitlab-ci.yml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    <span class="md-ellipsis">
+      build
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    <span class="md-ellipsis">
+      test
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prod" class="md-nav__link">
+    <span class="md-ellipsis">
+      prod
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-gitlab-ciyml_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full .gitlab-ci.yml
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Instance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development instance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VMs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Services
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/pgadmin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    pgAdmin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configurations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configs/gitlab-runner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gitlab Runner
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configs/postgresql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configs/sshkey/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH-key
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configs/ceph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CEPH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configs/override-pages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Override Pages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Features
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Features
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Features
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/oer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Publications
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Global search
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/curations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Curations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#web-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Server
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Web Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      docker-compose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-ciyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      .gitlab-ci.yml
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=".gitlab-ci.yml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build_prod" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_prod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prod_one-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      prod_one-deploy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prod_two-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      prod_two-deploy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-gitlab-ciyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full .gitlab-ci.yml
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elasticsearch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elasticsearch
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elasticsearch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-prodsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      deploy-prod.sh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-ciyml_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      .gitlab-ci.yml
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=".gitlab-ci.yml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    <span class="md-ellipsis">
+      build
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    <span class="md-ellipsis">
+      test
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prod" class="md-nav__link">
+    <span class="md-ellipsis">
+      prod
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-gitlab-ciyml_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full .gitlab-ci.yml
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="production-instance">Production Instance<a class="headerlink" href="#production-instance" title="Permanent link">&para;</a></h1>
+<p><a href="https://repository.tugraz.at/">repository.tugraz.at</a></p>
+<p>Production instance has <strong>3</strong> VMs:</p>
+<ol>
+<li>Web Server VM (invenio01-prod)</li>
+<li>Web Server VM (invenio02-prod)</li>
+<li>Services VM (invenio03-prod)</li>
+</ol>
+<p>These virtual machines are split into two categories, <strong>Web Servers</strong> and <strong>Services</strong>. In this guideline we will take a look on both:</p>
+<h2 id="web-server">Web Server<a class="headerlink" href="#web-server" title="Permanent link">&para;</a></h2>
+<p>Base image of the <a href="https://gitlab.tugraz.at/invenio/repository">repository</a> instance.</p>
+<ul>
+<li>
+<p><strong><a href="https://uwsgi-docs.readthedocs.io/en/latest/WSGIquickstart.html">uWSGI</a></strong>
+is a software application that "aims at developing a full stack for building hosting services".
+uwsgi (all lowercase) is the native binary protocol that uWSGI uses to communicate with other servers.</p>
+</li>
+<li>
+<p><strong><a href="https://docs.celeryproject.org/en/stable/userguide/application.html">Celery</a></strong>
+is asynchronous task queue or job queue which is based on distributed message passing. While it supports scheduling, its focus is on operations in real time.</p>
+</li>
+</ul>
+<p>Alongside our base image, we are also pushing a <a href="https://gitlab.tugraz.at/invenio/nginx">NGINX</a> container as a front-end proxy.</p>
+<ul>
+<li><strong><a href="https://nginx.org/en/docs/">Nginx</a></strong>
+is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache. </li>
+</ul>
+<p>The web server VMs are configured to the F5 load balancer that is provided by <a href="https://www.tugraz.at/tu-graz/organisationsstruktur/serviceeinrichtungen-und-stabsstellen/zentraler-informatikdienst/">Tu Graz ZID</a>.</p>
+<p>The F5 load balancer is forwarding the requests to one of the (Web Server VM), and then the requests are proxied by <a href="https://gitlab.tugraz.at/invenio/nginx">NGINX</a> to <a href="https://uwsgi-docs.readthedocs.io/en/latest/WSGIquickstart.html">UWSGI web applications</a>. As shown below:</p>
+<p><img alt="" src="../images/invenio-prod.png?raw=true" /></p>
+<p>The gitlab repository <strong><a href="https://gitlab.tugraz.at/invenio/repository">Repository</a></strong> is the Web server, which holds all the files and data to build the application's base image and run the docker containers to our instances.</p>
+<p>The <strong>base image</strong> is a Docker image that will include all the dependencies required to run the application web-server, and its build with the help of <strong>Dockerfile</strong> and the commands define in it.</p>
+<p>From the base image then we are running three containers <strong>web-ui</strong>, <strong>web-api</strong>, and a <strong>worker</strong> with the help of the <strong>docker-compose</strong> file, as shown below.</p>
+<p><img alt="" src="../images/baseimage.png?raw=true" /></p>
+<p>Alongside these three containers from the base image, the <strong>docker-compose</strong> is also responsible to push a <strong><a href="https://gitlab.tugraz.at/invenio/nginx">NGINX</a></strong> container to our servers.
+which then proxies the requests to the <strong>web-ui</strong>, and <strong>web-api</strong>, as shown below:</p>
+<p><img alt="" src="../images/webserver.png?raw=true" /></p>
+<h3 id="docker-compose">docker-compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h3>
+<p>docker-compose is a tool for defining and running multi-container Docker applications.</p>
+<p><strong>docker-compose-prod.yml</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright (C) 2021 Graz University of Technology</span>
+<span class="c1">#</span>
+<span class="c1"># Following services are included:</span>
+<span class="c1"># - Frontend server: Nginx (exposed port: 8080)</span>
+<span class="c1"># - UI application: UWSGI (not exposed)</span>
+<span class="c1"># - API application: UWSGI (not exposed)</span>
+<span class="c1"># - Worker: Celery (not exposed)</span>
+
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2.2&#39;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Frontend</span>
+<span class="w">  </span><span class="nt">frontend</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.gitlab.tugraz.at/invenio/nginx:prod</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;always&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">static_data:/opt/invenio/var/instance/static</span>
+<span class="w">    </span><span class="nt">links</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web-ui</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web-api</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8080:8080&quot;</span>
+
+<span class="w">  </span><span class="c1"># UI Application</span>
+<span class="w">  </span><span class="nt">web-ui</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;uwsgi</span><span class="nv"> </span><span class="s">/opt/invenio/var/instance/uwsgi_ui.ini&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.gitlab.tugraz.at/invenio/repository:${TAG_PROD}</span>
+<span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${ENV_FILE_PROD}</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5000&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">static_data:/opt/invenio/var/instance/static</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uploaded_data:/opt/invenio/var/instance/data</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">archived_data:/opt/invenio/var/instance/archive</span>
+
+<span class="w">  </span><span class="c1"># API Rest Application</span>
+<span class="w">  </span><span class="nt">web-api</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;uwsgi</span><span class="nv"> </span><span class="s">/opt/invenio/var/instance/uwsgi_rest.ini&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.gitlab.tugraz.at/invenio/repository:${TAG_PROD}</span>
+<span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${ENV_FILE_PROD}</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5000&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uploaded_data:/opt/invenio/var/instance/data</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">archived_data:/opt/invenio/var/instance/archive</span>
+
+<span class="w">  </span><span class="c1"># Worker</span>
+<span class="w">  </span><span class="nt">worker</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;always&quot;</span>
+<span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${ENV_FILE_PROD}</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;celery</span><span class="nv"> </span><span class="s">-A</span><span class="nv"> </span><span class="s">invenio_app.celery</span><span class="nv"> </span><span class="s">worker</span><span class="nv"> </span><span class="s">--loglevel=INFO&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.gitlab.tugraz.at/invenio/repository:${TAG_PROD}</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">static_data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">uploaded_data</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bind</span>
+<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/storage</span>
+<span class="w">  </span><span class="nt">archived_data</span><span class="p">:</span>
+</code></pre></div>
+
+<h3 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h3>
+<p>A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.</p>
+<p>The Dockerfile for <strong><a href="https://gitlab.tugraz.at/invenio/repository">Repository</a></strong>, as below.</p>
+<div class="codehilite"><pre><span></span><code><span class="c"># Dockerfile that builds a fully functional image of your app.</span>
+<span class="c">#</span>
+<span class="c"># This image installs all Python dependencies for your application. It&#39;s based</span>
+<span class="c"># on CentOS 8 with Python 3.8 (https://github.com/inveniosoftware/docker-invenio)</span>
+<span class="c"># and includes Pip, Pipenv, Node.js, NPM and some few standard libraries</span>
+<span class="c"># Repository usually needs.</span>
+
+<span class="c"># Pulling Centos8 with python3.8 image.</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">inveniosoftware/centos8-python:3.8</span>
+
+<span class="c"># env arg</span>
+<span class="k">ARG</span><span class="w"> </span>ENVIRONMENT
+
+<span class="c"># These packages are required for shibboleth authentication.</span>
+<span class="c"># Installing xmlsec packages</span>
+<span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>localinstall<span class="w"> </span>-y<span class="w"> </span>http://mirror.centos.org/centos/8/PowerTools/x86_64/os/Packages/xmlsec1-devel-1.2.25-4.el8.x86_64.rpm<span class="w"> </span><span class="se">\</span>
+<span class="w">                        </span>http://mirror.centos.org/centos/8/PowerTools/x86_64/os/Packages/xmlsec1-openssl-devel-1.2.25-4.el8.x86_64.rpm
+
+<span class="c"># Installing libtool package</span>
+<span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>localinstall<span class="w"> </span>-y<span class="w"> </span>http://mirror.centos.org/centos/8/AppStream/x86_64/os/Packages/libtool-ltdl-devel-2.4.6-25.el8.x86_64.rpm
+
+<span class="c"># Copy Pipfile and pipfile.lock to ./ directory</span>
+<span class="k">COPY</span><span class="w"> </span>Pipfile<span class="w"> </span>Pipfile.lock<span class="w"> </span>./
+<span class="c"># Install all the dependecies defined in the Pipfile.</span>
+<span class="k">RUN</span><span class="w"> </span>pipenv<span class="w"> </span>install<span class="w"> </span>--deploy<span class="w"> </span>--system<span class="w"> </span>--pre
+
+<span class="c"># Copy other necessary files</span>
+<span class="k">COPY</span><span class="w"> </span>./docker/uwsgi/<span class="w"> </span><span class="si">${</span><span class="nv">INVENIO_INSTANCE_PATH</span><span class="si">}</span>
+<span class="k">COPY</span><span class="w"> </span>./prod/invenio.cfg<span class="w"> </span><span class="si">${</span><span class="nv">INVENIO_INSTANCE_PATH</span><span class="si">}</span>
+<span class="k">COPY</span><span class="w"> </span>./templates/<span class="w"> </span><span class="si">${</span><span class="nv">INVENIO_INSTANCE_PATH</span><span class="si">}</span>/templates/
+<span class="k">COPY</span><span class="w"> </span>./app_data/<span class="w"> </span><span class="si">${</span><span class="nv">INVENIO_INSTANCE_PATH</span><span class="si">}</span>/app_data/
+<span class="k">COPY</span><span class="w"> </span>./<span class="w"> </span>.
+
+<span class="c"># This will create, install and build all the statics &amp; assets. </span>
+<span class="k">RUN</span><span class="w"> </span>cp<span class="w"> </span>-r<span class="w"> </span>./static/.<span class="w"> </span><span class="si">${</span><span class="nv">INVENIO_INSTANCE_PATH</span><span class="si">}</span>/static/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>cp<span class="w"> </span>-r<span class="w"> </span>./assets/.<span class="w"> </span><span class="si">${</span><span class="nv">INVENIO_INSTANCE_PATH</span><span class="si">}</span>/assets/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>invenio<span class="w"> </span>collect<span class="w"> </span>--verbose<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>invenio<span class="w"> </span>webpack<span class="w"> </span>create<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>invenio<span class="w"> </span>webpack<span class="w"> </span>install<span class="w"> </span>--unsafe<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>invenio<span class="w"> </span>webpack<span class="w"> </span>build
+
+
+<span class="c"># Instruction used to configure how the container will run.</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;bash&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-c&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<h3 id="pipeline">Pipeline<a class="headerlink" href="#pipeline" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../images/pipeline_repo.png?raw=true" /></p>
+<h3 id="gitlab-ciyml">.gitlab-ci.yml<a class="headerlink" href="#gitlab-ciyml" title="Permanent link">&para;</a></h3>
+<p>is a YAML file that you create on your project's root. This file automatically runs whenever you push code in the repository. Pipelines consist of one or more stages that run in order and can each contain one or more jobs that run in parallel. These jobs (or scripts) get executed by the <a href="https://docs.gitlab.com/runner/">GitLab Runner</a> agent.</p>
+<p><a href="https://gitlab.tugraz.at/invenio/repository">Repository</a> production pipeline consist of <strong>three stages</strong>:</p>
+<h4 id="build_prod">build_prod<a class="headerlink" href="#build_prod" title="Permanent link">&para;</a></h4>
+<p>In this stage the pipeline is building base image for <strong>Production instance</strong>.</p>
+<p>Login to docker, clean docker cache, for containers, volumes and images.</p>
+<div class="codehilite"><pre><span></span><code>  before_script:
+    - echo &quot;login to docker...&quot;
+    - echo &quot;$CI_REGISTRY_PASSWORD&quot; | docker login -u &quot;$CI_REGISTRY_USER&quot; --password-stdin &quot;$CI_REGISTRY&quot;
+    - echo &quot;Clean docker cache, for containers, volumes and images...&quot;
+    - docker system prune -f --volumes
+    - docker system prune -a -f
+    - docker image prune -f
+</code></pre></div>
+
+<p>Build and push base image to gitlab <a href="https://gitlab.tugraz.at/invenio/repository/container_registry">Container Registry</a>.
+Using Tag name <code>CI_COMMIT_TAG</code>, which is a reference to the latest repository tag/release.</p>
+<div class="codehilite"><pre><span></span><code>  script:
+    - echo &quot;Build base image...&quot; 
+    - docker build --no-cache -t &quot;$CI_REGISTRY_IMAGE&quot;:$CI_COMMIT_TAG --build-arg ENVIRONMENT=PROD . 
+    - echo &quot;Push image to the gitlab registry...&quot; 
+    - docker push &quot;$CI_REGISTRY_IMAGE&quot;:$CI_COMMIT_TAG
+</code></pre></div>
+
+<p>Logout from docker</p>
+<div class="codehilite"><pre><span></span><code>  after_script:
+    - echo &quot;Logout from docker...&quot; 
+    - &quot;docker logout ${CI_REGISTRY}&quot;
+</code></pre></div>
+
+<p>Only run for <code>tags</code>.</p>
+<div class="codehilite"><pre><span></span><code>  only:
+    - tags
+</code></pre></div>
+
+<p>Execute jobs with Gitlab-runner tag name <code>shell</code>:</p>
+<div class="codehilite"><pre><span></span><code>  tags:
+   - shell
+</code></pre></div>
+
+<p>Full build_prod stage:</p>
+<div class="codehilite"><pre><span></span><code>build_prod:
+  stage: build_prod
+  before_script:
+    - echo &quot;login to docker...&quot;
+    - echo &quot;$CI_REGISTRY_PASSWORD&quot; | docker login -u &quot;$CI_REGISTRY_USER&quot; --password-stdin &quot;$CI_REGISTRY&quot;
+    - echo &quot;Clean docker cache, for containers, volumes and images...&quot;
+    - docker system prune -f --volumes
+    - docker system prune -a -f
+    - docker image prune -f
+  script:
+    - echo &quot;Build base image...&quot; 
+    - docker build --no-cache -t &quot;$CI_REGISTRY_IMAGE&quot;:$CI_COMMIT_TAG --build-arg ENVIRONMENT=PROD . 
+    - echo &quot;Push image to the gitlab registry...&quot; 
+    - docker push &quot;$CI_REGISTRY_IMAGE&quot;:$CI_COMMIT_TAG
+  after_script:
+    - echo &quot;Logout from docker...&quot; 
+    - &quot;docker logout ${CI_REGISTRY}&quot;
+  only:
+    - tags
+  tags:
+   - shell
+</code></pre></div>
+
+<h4 id="prod_one-deploy">prod_one-deploy<a class="headerlink" href="#prod_one-deploy" title="Permanent link">&para;</a></h4>
+<p>In this stage pipeline is deploying the base image to the <strong>Web Server(invenio01-prod)</strong>.</p>
+<p>Login to docker, clean docker cache, containers, volumes &amp; images.</p>
+<div class="codehilite"><pre><span></span><code>  before_script:
+    - echo &quot;login to docker...&quot;
+    - echo &quot;$CI_REGISTRY_PASSWORD&quot; | docker login -u &quot;$CI_REGISTRY_USER&quot; --password-stdin &quot;$CI_REGISTRY&quot;
+    - echo &quot;Clean docker cache, for containers, volumes and images...&quot;
+    - docker-compose -f docker-compose.prod.yml down
+    - docker system prune -f --volumes
+    - docker system prune -a -f
+    - docker image prune -f
+</code></pre></div>
+
+<p>Run docker-compose, pull images and run containers defined in <code>docker-compose.prod.yml</code> file.</p>
+<div class="codehilite"><pre><span></span><code>  script:
+    - echo &quot;run docker-compose...&quot;
+    - docker-compose -f docker-compose.prod.yml up -d
+</code></pre></div>
+
+<p>Logout from docker</p>
+<div class="codehilite"><pre><span></span><code>  after_script:
+    - echo &quot;Logout from docker...&quot; 
+    - &quot;docker logout ${CI_REGISTRY}&quot;
+</code></pre></div>
+
+<p>Only run for <code>tags</code>.</p>
+<div class="codehilite"><pre><span></span><code>  only:
+    - tags
+</code></pre></div>
+
+<p>Execute jobs with Gitlab-runner tag name <code>prod01</code>:</p>
+<div class="codehilite"><pre><span></span><code>  tags:
+   - prod01
+</code></pre></div>
+
+<p>Full prod_one-deploy stage:</p>
+<div class="codehilite"><pre><span></span><code>prod_one-deploy:
+  stage: prod_one
+  before_script:
+    - echo &quot;login to docker...&quot;
+    - echo &quot;$CI_REGISTRY_PASSWORD&quot; | docker login -u &quot;$CI_REGISTRY_USER&quot; --password-stdin &quot;$CI_REGISTRY&quot;
+    - echo &quot;Clean docker cache, for containers, volumes and images...&quot;
+    - docker-compose -f docker-compose.prod.yml down
+    - docker system prune -f --volumes
+    - docker system prune -a -f
+    - docker image prune -f
+
+  script:
+    - echo &quot;run docker-compose...&quot;
+    - docker-compose -f docker-compose.prod.yml up -d
+  after_script:
+    - echo &quot;Logout from docker...&quot; 
+    - &quot;docker logout ${CI_REGISTRY}&quot;
+  only:
+    - tags
+  tags:
+   - prod01
+</code></pre></div>
+
+<h4 id="prod_two-deploy">prod_two-deploy<a class="headerlink" href="#prod_two-deploy" title="Permanent link">&para;</a></h4>
+<p>In this stage pipeline is deploying the base image to the <strong>Web Server(invenio02-prod)</strong>.</p>
+<p>Login to docker, clean docker cache, containers, volumes &amp; images.</p>
+<div class="codehilite"><pre><span></span><code>  before_script:
+    - echo &quot;login to docker...&quot;
+    - echo &quot;$CI_REGISTRY_PASSWORD&quot; | docker login -u &quot;$CI_REGISTRY_USER&quot; --password-stdin &quot;$CI_REGISTRY&quot;
+    - echo &quot;Clean docker cache, for containers, volumes and images...&quot;
+    - docker-compose -f docker-compose.prod.yml down
+    - docker system prune -f --volumes
+    - docker system prune -a -f
+    - docker image prune -f
+</code></pre></div>
+
+<p>Run docker-compose, pull images and run containers defined in <code>docker-compose.prod.yml</code> file.</p>
+<div class="codehilite"><pre><span></span><code>  script:
+    - echo &quot;run docker-compose...&quot;
+    - docker-compose -f docker-compose.prod.yml up -d
+</code></pre></div>
+
+<p>Logout from docker</p>
+<div class="codehilite"><pre><span></span><code>  after_script:
+    - echo &quot;Logout from docker...&quot; 
+    - &quot;docker logout ${CI_REGISTRY}&quot;
+</code></pre></div>
+
+<p>Only run for <code>tags</code>.</p>
+<div class="codehilite"><pre><span></span><code>  only:
+    - tags
+</code></pre></div>
+
+<p>Execute jobs with Gitlab-runner tag name <code>prod02</code>:</p>
+<div class="codehilite"><pre><span></span><code>  tags:
+   - prod02
+</code></pre></div>
+
+<p>Full test_two stage:</p>
+<div class="codehilite"><pre><span></span><code>prod_two-deploy:
+  stage: prod_two
+  before_script:
+    - echo &quot;login to docker...&quot;
+    - echo &quot;$CI_REGISTRY_PASSWORD&quot; | docker login -u &quot;$CI_REGISTRY_USER&quot; --password-stdin &quot;$CI_REGISTRY&quot;
+    - echo &quot;Clean docker cache, for containers, volumes and images...&quot;
+    - docker-compose -f docker-compose.prod.yml down
+    - docker system prune -f --volumes
+    - docker system prune -a -f
+    - docker image prune -f
+
+  script:
+    - echo &quot;run docker-compose...&quot;
+    - docker-compose -f docker-compose.prod.yml up -d
+  after_script:
+    - echo &quot;Logout from docker...&quot; 
+    - &quot;docker logout ${CI_REGISTRY}&quot;
+  only:
+    - tags
+  tags:
+   - prod02
+</code></pre></div>
+
+<h4 id="full-gitlab-ciyml">Full .gitlab-ci.yml<a class="headerlink" href="#full-gitlab-ciyml" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code># Pipline stages
+stages:
+  - build_prod
+  - prod_one
+  - prod_two
+
+build_prod:
+  stage: build_prod
+  before_script:
+    - echo &quot;login to docker...&quot;
+    - echo &quot;$CI_REGISTRY_PASSWORD&quot; | docker login -u &quot;$CI_REGISTRY_USER&quot; --password-stdin &quot;$CI_REGISTRY&quot;
+    - echo &quot;Clean docker cache, for containers, volumes and images...&quot;
+    - docker system prune -f --volumes
+    - docker system prune -a -f
+    - docker image prune -f
+  script:
+    - echo &quot;Build base image...&quot; 
+    - docker build --no-cache -t &quot;$CI_REGISTRY_IMAGE&quot;:$CI_COMMIT_TAG --build-arg ENVIRONMENT=PROD . 
+    - echo &quot;Push image to the gitlab registry...&quot; 
+    - docker push &quot;$CI_REGISTRY_IMAGE&quot;:$CI_COMMIT_TAG
+  after_script:
+    - echo &quot;Logout from docker...&quot; 
+    - &quot;docker logout ${CI_REGISTRY}&quot;
+  only:
+    - tags
+  tags:
+   - shell
+
+# Deploy stage for web server 01
+prod_one-deploy:
+  stage: prod_one
+  before_script:
+    - echo &quot;login to docker...&quot;
+    - echo &quot;$CI_REGISTRY_PASSWORD&quot; | docker login -u &quot;$CI_REGISTRY_USER&quot; --password-stdin &quot;$CI_REGISTRY&quot;
+    - echo &quot;Clean docker cache, for containers, volumes and images...&quot;
+    - docker-compose -f docker-compose.prod.yml down
+    - docker system prune -f --volumes
+    - docker system prune -a -f
+    - docker image prune -f
+
+  script:
+    - echo &quot;run docker-compose...&quot;
+    - docker-compose -f docker-compose.prod.yml up -d
+  after_script:
+    - echo &quot;Logout from docker...&quot; 
+    - &quot;docker logout ${CI_REGISTRY}&quot;
+  only:
+    - tags
+  tags:
+   - prod01
+
+# Deploy stage for web server 02
+prod_two-deploy:
+  stage: prod_two
+  before_script:
+    - echo &quot;login to docker...&quot;
+    - echo &quot;$CI_REGISTRY_PASSWORD&quot; | docker login -u &quot;$CI_REGISTRY_USER&quot; --password-stdin &quot;$CI_REGISTRY&quot;
+    - echo &quot;Clean docker cache, for containers, volumes and images...&quot;
+    - docker-compose -f docker-compose.prod.yml down
+    - docker system prune -f --volumes
+    - docker system prune -a -f
+    - docker image prune -f
+
+  script:
+    - echo &quot;run docker-compose...&quot;
+    - docker-compose -f docker-compose.prod.yml up -d
+  after_script:
+    - echo &quot;Logout from docker...&quot; 
+    - &quot;docker logout ${CI_REGISTRY}&quot;
+  only:
+    - tags
+  tags:
+   - prod02
+</code></pre></div>
+
+<h2 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h2>
+<p>TU Graz Repository consist of these services:</p>
+<ul>
+<li>
+<p><strong><a href="https://gitlab.tugraz.at/invenio/elasticsearch">Elasticsearch</a></strong> is a search engine based on the Lucene library.
+It provides a distributed, multitenant-capable full-text search engine with an HTTP web interface and schema-free JSON documents. Elasticsearch is developed in Java.</p>
+</li>
+<li>
+<p><strong><a href="https://www.postgresql.org/">PostgreSQL</a></strong> is a free and open-source relational database management system (RDBMS) emphasizing extensibility and SQL compliance.</p>
+</li>
+<li>
+<p><strong><a href="https://gitlab.tugraz.at/invenio/cache">Redis</a></strong> Remote Dictionary Server is an in-memory data structure project implementing a distributed, in-memory key–value database with optional durability. Redis supports different kinds of abstract data structures, such as strings, lists, maps, sets, sorted sets, HyperLogLogs, bitmaps, streams, and spatial indexes.</p>
+</li>
+<li>
+<p><strong><a href="https://gitlab.tugraz.at/invenio/exim4">EXIM4</a></strong> Exim4 is a Message Transfer Agent (MTA) developed at the University of Cambridge for use on Unix systems connected to the Internet. Exim can be installed in place of sendmail, although its configuration is quite different.</p>
+</li>
+<li>
+<p><strong><a href="https://gitlab.tugraz.at/invenio/rabbitmq">RabbitMQ</a></strong> RabbitMQ is an open-source message-broker software that originally implemented the Advanced Message Queuing Protocol and has since been extended with a plug-in architecture to support Streaming Text Oriented Messaging Protocol, MQ Telemetry Transport.</p>
+</li>
+</ul>
+<p>These services have a seperate repository in the Gitlab Group <strong><a href="https://gitlab.tugraz.at/invenio">invenio</a></strong>.</p>
+<p>Except <a href="https://www.postgresql.org/">PostgreSQL</a> other Services deployment are the same.</p>
+<p>As an Example we will have a look into our <a href="https://gitlab.tugraz.at/invenio/exim4">Elasticsearch</a> deployment.</p>
+<h3 id="elasticsearch">Elasticsearch<a class="headerlink" href="#elasticsearch" title="Permanent link">&para;</a></h3>
+<h4 id="dockerfile_1">Dockerfile<a class="headerlink" href="#dockerfile_1" title="Permanent link">&para;</a></h4>
+<p>A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.</p>
+<p>The Dockerfile for <a href="https://gitlab.tugraz.at/invenio/elasticsearch">Elasticsearch</a>, as below.</p>
+<div class="codehilite"><pre><span></span><code><span class="c"># Pull elasticsearch version 7</span>
+<span class="k">From</span><span class="w"> </span><span class="s">docker.elastic.co/elasticsearch/elasticsearch-oss:7.9.3</span>
+
+<span class="c"># add single-node config</span>
+<span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;discovery.type: single-node&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/usr/share/elasticsearch/config/elasticsearch.yml
+
+<span class="c"># define docker User</span>
+<span class="k">USER</span><span class="w"> </span><span class="s">elasticsearch</span>
+</code></pre></div>
+
+<h4 id="deploy-prodsh">deploy-prod.sh<a class="headerlink" href="#deploy-prodsh" title="Permanent link">&para;</a></h4>
+<p>Is a helper file for deployment, and used by .gitlab-ci.yml. It contains instruction for docker commands.</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">CONTAINER_NAME</span><span class="o">=</span>elasticsearch
+<span class="nv">IMAGE_NAME</span><span class="o">=</span>registry.gitlab.tugraz.at/invenio/elasticsearch:latest
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;################################################&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Stopping and removing container with given name......</span><span class="nv">$CONTAINER_NAME</span><span class="s2">&quot;</span>
+docker<span class="w"> </span>stop<span class="w"> </span><span class="nv">$CONTAINER_NAME</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span><span class="nv">$CONTAINER_NAME</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;################################################&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Removing image if given name exists...</span><span class="nv">$IMAGE_NAME</span><span class="s2">&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>!<span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>docker<span class="w"> </span>images<span class="w"> </span>-q<span class="w"> </span><span class="nv">$IMAGE_NAME</span><span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Image exist...&quot;</span>
+<span class="w">  </span>docker<span class="w"> </span>rmi<span class="w"> </span>-f<span class="w"> </span><span class="nv">$IMAGE_NAME</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;################################################&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Running new container..............&quot;</span>
+docker<span class="w"> </span>run<span class="w"> </span>--name<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CONTAINER_NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>/storage,target<span class="o">=</span>/usr/share/elasticsearch/data<span class="w"> </span><span class="se">\</span>
+--memory<span class="w"> </span>1g<span class="w"> </span>-p<span class="w"> </span><span class="m">9200</span>:9200<span class="w"> </span>-p<span class="w"> </span><span class="m">9300</span>:9300<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span>bootstrap.memory_lock<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="s2">&quot;ES_JAVA_OPTS=-Xms512m -Xmx512m&quot;</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span>discovery.type<span class="o">=</span>single-node<span class="w"> </span><span class="se">\</span>
+--health-cmd<span class="o">=</span><span class="s2">&quot;curl --fail localhost:9200/_cluster/health?wait_for_status=green || exit 1&quot;</span><span class="w"> </span><span class="se">\</span>
+--health-interval<span class="o">=</span>30s<span class="w"> </span><span class="se">\</span>
+--health-retries<span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+--health-timeout<span class="o">=</span>30s<span class="w"> </span><span class="se">\</span>
+--restart<span class="o">=</span>always<span class="w"> </span><span class="se">\</span>
+<span class="nv">$IMAGE_NAME</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;################################################&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;job ended...&quot;</span>
+</code></pre></div>
+
+<h4 id="gitlab-ciyml_1">.gitlab-ci.yml<a class="headerlink" href="#gitlab-ciyml_1" title="Permanent link">&para;</a></h4>
+<p><a href="https://gitlab.tugraz.at/invenio/elasticsearch">Elasticsearch</a> pipeline consist of <strong>two stages</strong></p>
+<h5 id="build">build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h5>
+<p>Pipeline builds the docker image and pushes it to the Registry.</p>
+<p>Login to docker:</p>
+<div class="codehilite"><pre><span></span><code>  before_script:
+    - echo &quot;################################&quot;
+    - echo &quot;login to docker...&quot;
+    - docker login -u &quot;$CI_REGISTRY_USER&quot; -p &quot;$CI_REGISTRY_PASSWORD&quot; $CI_REGISTRY
+</code></pre></div>
+
+<p>Build and push docker image:</p>
+<div class="codehilite"><pre><span></span><code>  script:
+    - echo &quot;################################&quot;
+    - echo &quot;Building the image...&quot;
+    - docker build -t &quot;$CI_REGISTRY_IMAGE&quot; .
+    - echo &quot;push image to registry...&quot;
+    - docker push &quot;$CI_REGISTRY_IMAGE&quot;
+</code></pre></div>
+
+<p>Only run for branch <code>master</code>:</p>
+<div class="codehilite"><pre><span></span><code>  only:
+    - master
+</code></pre></div>
+
+<p>Execute jobs with Gitlab-runner tag name <code>shell</code>:</p>
+<div class="codehilite"><pre><span></span><code>  tags:
+   - shell
+</code></pre></div>
+
+<h5 id="test">test<a class="headerlink" href="#test" title="Permanent link">&para;</a></h5>
+<p>In this stage the pipeline pulls the newly created image and creates a container to the VM.</p>
+<p><code>before_script</code> run followings:</p>
+<ul>
+<li>Install ssh-agent if not already installed, it is required by Docker.</li>
+<li>Run ssh-agent (inside the build environment)</li>
+<li>Add the SSH key stored in PROD_03_PRIVATE_KEY variable to the agent store</li>
+<li>Create the SSH directory and give it the right permissions</li>
+<li>scan the keys of your private server from variable <code>SSH_SERVER_HOSTKEYS</code></li>
+</ul>
+<div class="codehilite"><pre><span></span><code>  before_script:
+    - echo &quot;SSH-USER&quot;
+    - &#39;which ssh-agent || ( apt-get update -y &amp;&amp; apt-get install openssh-client git -y )&#39;
+    - eval $(ssh-agent -s)
+    - echo &quot;$PROD_03_PRIVATE_KEY&quot; | tr -d &#39;\r&#39; | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo &quot;$SSH_SERVER_HOSTKEYS&quot; &gt; ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+</code></pre></div>
+
+<p><code>script</code>:  using <code>ssh</code> commands logs in to docker, and runs scripts in <code>deploy-prod.sh</code> to our server.</p>
+<div class="codehilite"><pre><span></span><code>  script:
+    - ssh $PROD_03_DOMAIN &quot;echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin&quot;
+    - ssh $PROD_03_DOMAIN &quot;eval &#39;$(cat ./deploy-test.sh)&#39;&quot;
+</code></pre></div>
+
+<p>Only run for branch <code>master</code>:</p>
+<div class="codehilite"><pre><span></span><code>  only:
+    - master
+</code></pre></div>
+
+<p>Execute jobs with Gitlab-runner tag name <code>shell</code>:</p>
+<div class="codehilite"><pre><span></span><code>  tags:
+   - shell
+</code></pre></div>
+
+<h5 id="prod">prod<a class="headerlink" href="#prod" title="Permanent link">&para;</a></h5>
+<p>In this stage the pipeline pulls the newly created image and creates a container to the Production instance.</p>
+<p><code>before_script</code> run followings:</p>
+<ul>
+<li>Install ssh-agent if not already installed, it is required by Docker.</li>
+<li>Run ssh-agent (inside the build environment)</li>
+<li>Add the SSH key stored in PROD_03_PRIVATE_KEY variable to the agent store</li>
+<li>Create the SSH directory and give it the right permissions</li>
+<li>scan the keys of your private server from variable <code>SSH_SERVER_HOSTKEYS</code></li>
+</ul>
+<div class="codehilite"><pre><span></span><code>  before_script:
+    - echo &quot;SSH-USER&quot;
+    - &#39;which ssh-agent || ( apt-get update -y &amp;&amp; apt-get install openssh-client git -y )&#39;
+    - eval $(ssh-agent -s)
+    - echo &quot;$PROD_03_PRIVATE_KEY&quot; | tr -d &#39;\r&#39; | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo &quot;$SSH_SERVER_HOSTKEYS&quot; &gt; ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+</code></pre></div>
+
+<p><code>script</code>:  using <code>ssh</code> commands logs in to docker, and runs scripts in <code>deploy-prod.sh</code> to our server.</p>
+<div class="codehilite"><pre><span></span><code>  script:
+    - ssh $PROD_03_DOMAIN  &quot;echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin&quot;
+    - ssh $PROD_03_DOMAIN  &quot;eval &#39;$(cat ./deploy-prod.sh)&#39;&quot;
+</code></pre></div>
+
+<p>Only run for branch <code>master</code>:</p>
+<div class="codehilite"><pre><span></span><code>  only:
+    - master
+</code></pre></div>
+
+<p>Execute jobs with Gitlab-runner tag name <code>shell</code>:</p>
+<div class="codehilite"><pre><span></span><code>  tags:
+   - shell
+</code></pre></div>
+
+<h4 id="full-gitlab-ciyml_1">Full .gitlab-ci.yml<a class="headerlink" href="#full-gitlab-ciyml_1" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code>stages:
+  - build
+  - prod
+
+build:
+  stage: build
+  before_script:
+    - echo &quot;################################&quot;
+    - echo &quot;login to docker...&quot;
+    - docker login -u &quot;$CI_REGISTRY_USER&quot; -p &quot;$CI_REGISTRY_PASSWORD&quot; $CI_REGISTRY
+  script:
+    - echo &quot;################################&quot;
+    - echo &quot;Building the image...&quot;
+    - docker build -t &quot;$CI_REGISTRY_IMAGE&quot; .
+    - echo &quot;push image to registry...&quot;
+    - docker push &quot;$CI_REGISTRY_IMAGE&quot;
+  only:
+    - master
+  tags:
+   - shell
+
+prod:
+  stage: prod
+  before_script:
+    - echo &quot;################################&quot;
+    - echo &quot;SSH-USER&quot;
+  ##
+  ## Install ssh-agent if not already installed, it is required by Docker.
+  ## (change apt-get to yum if you use an RPM-based image)
+  ##
+    - &#39;which ssh-agent || ( apt-get update -y &amp;&amp; apt-get install openssh-client git -y )&#39;
+  ##
+  ## Run ssh-agent (inside the build environment)
+  ##
+    - eval $(ssh-agent -s)
+  ##
+  ## Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+  ## We&#39;re using tr to fix line endings which makes ed25519 keys work
+  ## without extra base64 encoding.
+  ## https://gitlab.com/gitlab-examples/ssh-private-key/issues/1#note_48526556
+  ##
+    - echo &quot;$PROD_03_PRIVATE_KEY&quot; | tr -d &#39;\r&#39; | ssh-add -
+  ##
+  ## Create the SSH directory and give it the right permissions
+  ##
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  ##
+  ## Use ssh-keyscan to scan the keys of your private server. Replace gitlab.com
+  ## with your own domain name. You can copy and repeat that command if you have
+  ## more than one server to connect to.
+  ##
+    #- ssh-keyscan invenio03-test.tugraz.at &gt;&gt; ~/.ssh/known_hosts
+    #- chmod 644 ~/.ssh/known_hosts
+  ##
+  ## Alternatively, assuming you created the SSH_SERVER_HOSTKEYS variable
+  ## previously, uncomment the following two lines instead.
+  ##
+    - echo &quot;$SSH_SERVER_HOSTKEYS&quot; &gt; ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+
+  script:
+    - echo &quot;################################&quot;
+    - ssh $PROD_03_DOMAIN &quot;echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin&quot;
+    - ssh $PROD_03_DOMAIN &quot;eval &#39;$(cat ./deploy-prod.sh)&#39;&quot;
+  only:
+    - master
+  tags:
+   - shell
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+
+
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="footer.title">
+        
+          <a href="../" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Infrastructure
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../test/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Test Instance
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020-2025 Graz University of Technology
+          </div>
+        
+      </div>
+      
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/tu-graz-library/docs-repository" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

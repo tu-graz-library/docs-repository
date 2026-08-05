@@ -12,9 +12,14 @@ Please visit the invenioRDM documentation for development section.
 [> Getting Started](https://inveniordm.docs.cern.ch/develop/)
 
 ## Deployment
-Get to know current deployment workflow for Tu Graz repository .
+Get to know the current deployment workflow for Tu Graz repository .
 
 [> Deployment Guides](deployment/index.md)
+
+## Deployment V2
+Get to know the future deployment workflow for Tu Graz repository .
+
+[> Deployment Guides](deployment-v2/index.md)
 
 <!-- ## Services
 In this session, we will explore the services that has been added to make your development/deployment environment smoother.

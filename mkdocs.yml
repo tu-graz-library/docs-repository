@@ -16,7 +16,7 @@ theme:
   highlightjs: true
   features:
     - navigation.tabs
-  name: material
+  name: mkdocs
   custom_dir: 'overrides'
   palette:
     primary: 'white'
@@ -36,6 +36,11 @@ nav:
     - Development instance: 'deployment/dev.md'
     - Deploy : 'deployment/deploy.md'
     - VMs : 'deployment/vms.md'
+  - Deployment V2:
+    - Infrastructure: 'deployment-v2/index.md'
+    - Production instance: 'deployment-v2/production.md'
+    - Test Instance: 'deployment-v2/test.md'
+    - Gitlab Workflow: 'deployment-v2/gitlab.md'
   - Services:
     # - Development services: 'services/index.md'
     - pgAdmin: 'services/pgadmin.md'
@@ -53,6 +58,7 @@ nav:
     - Publications: 'features/publications.md'
     - Global search: 'features/gs.md'
     - Curations: 'features/curations.md'
+    - Authentication: 'features/auth.md'
 
 # Customization
 extra:

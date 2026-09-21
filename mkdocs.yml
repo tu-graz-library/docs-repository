@@ -53,6 +53,9 @@ nav:
     - Publications: 'features/publications.md'
     - Global search: 'features/gs.md'
     - Curations: 'features/curations.md'
+  - Helpers:
+    - Helpers: 'helpers/index.md'
+    - Synchronize index: 'helpers/index_sync.md'
 
 # Customization
 extra:

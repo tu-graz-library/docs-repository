@@ -31,3 +31,8 @@ For more configurations such as How the gitlab-runners are registered? How the D
 Get to know the specific features of TU Graz repository
 
 [> Features](features/index.md)
+
+## Helpers
+Custom scripts and commands for the repository maintainers
+
+[> Helpers](helpers/index.md)
